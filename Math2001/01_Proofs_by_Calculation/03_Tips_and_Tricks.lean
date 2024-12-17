@@ -11,7 +11,7 @@ proofs. -/
 
 
 -- Example 1.3.1
-example {a b : ℤ} (h1 : a = 2 * b + 5) (h2 : b = 3) : a = 11 :=
+example {a b : ℤ} (h1 : a = 2 * b + 5) (h2 : b = 3) : a = 11 := by
   sorry
 
 -- Example 1.3.2
