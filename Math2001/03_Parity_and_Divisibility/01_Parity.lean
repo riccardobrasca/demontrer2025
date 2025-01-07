@@ -10,10 +10,12 @@ example : Odd (7 : ℤ) := by
   dsimp [Odd]
   use 3
   numbers
+  done
 
 
 example : Odd (-3 : ℤ) := by
   sorry
+  done
 
 example {n : ℤ} (hn : Odd n) : Odd (3 * n + 2) := by
   dsimp [Odd] at *
@@ -22,10 +24,11 @@ example {n : ℤ} (hn : Odd n) : Odd (3 * n + 2) := by
   calc
     3 * n + 2 = 3 * (2 * k + 1) + 2 := by rw [hk]
     _ = 2 * (3 * k + 2) + 1 := by ring
-
+  done
 
 example {n : ℤ} (hn : Odd n) : Odd (7 * n - 4) := by
   sorry
+  done
 
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by
   obtain ⟨a, ha⟩ := hx
@@ -34,16 +37,19 @@ example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x + y + 1) := by
   calc
     x + y + 1 = 2 * a + 1 + (2 * b + 1) + 1 := by rw [ha, hb]
     _ = 2 * (a + b + 1) + 1 := by ring
-
+  done
 
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x * y + 2 * y) := by
   sorry
+  done
 
 example {m : ℤ} (hm : Odd m) : Even (3 * m - 5) := by
   sorry
+  done
 
 example {n : ℤ} (hn : Even n) : Odd (n ^ 2 + 2 * n - 5) := by
   sorry
+  done
 
 example (n : ℤ) : Even (n ^ 2 + n + 4) := by
   obtain hn | hn := Int.even_or_odd n
@@ -57,47 +63,63 @@ example (n : ℤ) : Even (n ^ 2 + n + 4) := by
     calc
       n ^ 2 + n + 4 = (2 * x + 1) ^ 2 + (2 * x + 1) + 4 := by rw [hx]
       _ = 2 * (2 * x ^ 2 + 3 * x + 3) := by ring
+  done
 
 /-! # Exercises -/
 
 
 example : Odd (-9 : ℤ) := by
   sorry
+  done
 
 example : Even (26 : ℤ) := by
   sorry
+  done
 
 example {m n : ℤ} (hm : Odd m) (hn : Even n) : Odd (n + m) := by
   sorry
+  done
 
 example {p q : ℤ} (hp : Odd p) (hq : Even q) : Odd (p - q - 4) := by
   sorry
+  done
 
 example {a b : ℤ} (ha : Even a) (hb : Odd b) : Even (3 * a + b - 3) := by
   sorry
+  done
 
 example {r s : ℤ} (hr : Odd r) (hs : Odd s) : Even (3 * r - 5 * s) := by
   sorry
+  done
 
 example {x : ℤ} (hx : Odd x) : Odd (x ^ 3) := by
   sorry
+  done
 
 example {n : ℤ} (hn : Odd n) : Even (n ^ 2 - 3 * n + 2) := by
   sorry
+  done
 
 example {a : ℤ} (ha : Odd a) : Odd (a ^ 2 + 2 * a - 4) := by
   sorry
+  done
 
 example {p : ℤ} (hp : Odd p) : Odd (p ^ 2 + 3 * p - 5) := by
   sorry
+  done
 
 example {x y : ℤ} (hx : Odd x) (hy : Odd y) : Odd (x * y) := by
   sorry
+  done
 
 example (n : ℤ) : Odd (3 * n ^ 2 + 3 * n - 1) := by
   sorry
+  done
 
 example (n : ℤ) : ∃ m ≥ n, Odd m := by
   sorry
+  done
+
 example (a b c : ℤ) : Even (a - b) ∨ Even (a + c) ∨ Even (b - c) := by
   sorry
+  done

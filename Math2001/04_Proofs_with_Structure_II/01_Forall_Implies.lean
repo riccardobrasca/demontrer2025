@@ -5,11 +5,11 @@ import Library.Basic
 math2001_init
 
 
-example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 :=
+example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 := by
   calc
     a ≤ 1 ^ 2 - 2 * 1 := by apply h
     _ = -1 := by numbers
-
+  done
 
 example {n : ℕ} (hn : ∀ m, n ∣ m) : n = 1 := by
   have h1 : n ∣ 1 := by apply hn
@@ -17,18 +17,20 @@ example {n : ℕ} (hn : ∀ m, n ∣ m) : n = 1 := by
   apply le_antisymm
   · apply Nat.le_of_dvd h2 h1
   · apply Nat.pos_of_dvd_of_pos h1 h2
+  done
 
 
 example {a b : ℝ} (h : ∀ x, x ≥ a ∨ x ≤ b) : a ≤ b := by
   sorry
+  done
 
 example {a b : ℝ} (ha1 : a ^ 2 ≤ 2) (hb1 : b ^ 2 ≤ 2) (ha2 : ∀ y, y ^ 2 ≤ 2 → y ≤ a)
-    (hb2 : ∀ y, y ^ 2 ≤ 2 → y ≤ b) :
-    a = b := by
+    (hb2 : ∀ y, y ^ 2 ≤ 2 → y ≤ b) : a = b := by
   apply le_antisymm
   · apply hb2
     apply ha1
   · sorry
+  done
 
 example : ∃ b : ℝ, ∀ x : ℝ, b ≤ x ^ 2 - 2 * x := by
   use -1
@@ -36,10 +38,11 @@ example : ∃ b : ℝ, ∀ x : ℝ, b ≤ x ^ 2 - 2 * x := by
   calc
     -1 ≤ -1 + (x - 1) ^ 2 := by extra
     _ = x ^ 2 - 2 * x := by ring
-
+  done
 
 example : ∃ c : ℝ, ∀ x y, x ^ 2 + y ^ 2 ≤ 4 → x + y ≥ c := by
   sorry
+  done
 
 example : forall_sufficiently_large n : ℤ, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
   dsimp
@@ -52,6 +55,7 @@ example : forall_sufficiently_large n : ℤ, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
     _ ≥ 4 * n ^ 2 + 5 ^ 2 := by rel [hn]
     _ = 4 * n ^ 2 + 7 + 18 := by ring
     _ ≥ 4 * n ^ 2 + 7 := by extra
+  done
 
 
 example : Prime 2 := by
@@ -66,31 +70,38 @@ example : Prime 2 := by
     numbers -- show `1 = 1`
   · right
     numbers -- show `2 = 2`
-
+  done
 
 example : ¬ Prime 6 := by
   apply not_prime 2 3
   · numbers -- show `2 ≠ 1`
   · numbers -- show `2 ≠ 6`
   · numbers -- show `6 = 2 * 3`
+  done
 
 /-! # Exercises -/
 
 
-example {a : ℚ} (h : ∀ b : ℚ, a ≥ -3 + 4 * b - b ^ 2) : a ≥ 1 :=
+example {a : ℚ} (h : ∀ b : ℚ, a ≥ -3 + 4 * b - b ^ 2) : a ≥ 1 := by
   sorry
+  done
 
 example {n : ℤ} (hn : ∀ m, 1 ≤ m → m ≤ 5 → m ∣ n) : 15 ∣ n := by
   sorry
+  done
 
 example : ∃ n : ℕ, ∀ m : ℕ, n ≤ m := by
   sorry
+  done
 
 example : ∃ a : ℝ, ∀ b : ℝ, ∃ c : ℝ, a + b < c := by
   sorry
+  done
 
 example : forall_sufficiently_large x : ℝ, x ^ 3 + 3 * x ≥ 7 * x ^ 2 + 12 := by
   sorry
+  done
 
 example : ¬(Prime 45) := by
   sorry
+  done

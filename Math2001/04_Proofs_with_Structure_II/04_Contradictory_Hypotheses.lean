@@ -17,7 +17,7 @@ example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
     contradiction
   · -- the case `0 < y`
     apply hpos
-
+  done
 
 example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
   have H :=
@@ -26,7 +26,7 @@ example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
     _ < 3 := h2
   have : ¬(7 : ℤ) < 3 := by numbers
   contradiction
-
+  done
 
 example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
   have H :=
@@ -34,24 +34,7 @@ example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
     7 = t := by addarith [h]
     _ < 3 := h2
   numbers at H -- this is a contradiction!
-
-
-example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) :
-    n ≡ 0 [ZMOD 3] ∨ n ≡ 2 [ZMOD 3] := by
-  mod_cases h : n % 3
-  · -- case 1: `n ≡ 0 [ZMOD 3]`
-    left
-    apply h
-  · -- case 2: `n ≡ 1 [ZMOD 3]`
-    have H :=
-      calc 0 ≡ 0 + 3 * 1 [ZMOD 3] := by extra
-      _ = 1 ^ 2 + 1 + 1 := by numbers
-      _ ≡ n ^ 2 + n + 1 [ZMOD 3] := by rel [h]
-      _ ≡ 1 [ZMOD 3] := hn
-    numbers at H -- contradiction!
-  · -- case 3: `n ≡ 2 [ZMOD 3]`
-    right
-    apply h
+  done
 
 
 example {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p) : Prime p := by
@@ -66,6 +49,7 @@ example {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p
     addarith [hm]
   -- the case `1 < m`
   sorry
+  done
 
 example : Prime 5 := by
   apply prime_test
@@ -79,11 +63,12 @@ example : Prime 5 := by
     constructor <;> numbers
   · use 1
     constructor <;> numbers
-
+  done
 
 example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
     (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) : 3 ≤ a := by
   sorry
+  done
 
 /-! # Exercises -/
 
@@ -91,12 +76,15 @@ example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
 example {x y : ℝ} (n : ℕ) (hx : 0 ≤ x) (hn : 0 < n) (h : y ^ n ≤ x ^ n) :
     y ≤ x := by
   sorry
+  done
 
 example (n : ℤ) (hn : n ^ 2 ≡ 4 [ZMOD 5]) : n ≡ 2 [ZMOD 5] ∨ n ≡ 3 [ZMOD 5] := by
   sorry
+  done
 
 example : Prime 7 := by
   sorry
+  done
 
 example {x : ℚ} (h1 : x ^ 2 = 4) (h2 : 1 < x) : x = 2 := by
   have h3 :=
@@ -105,8 +93,10 @@ example {x : ℚ} (h1 : x ^ 2 = 4) (h2 : 1 < x) : x = 2 := by
       _ = 0 := by addarith [h1]
   rw [mul_eq_zero] at h3
   sorry
+  done
 
 namespace Nat
 
 example (p : ℕ) (h : Prime p) : p = 2 ∨ Odd p := by
   sorry
+  done

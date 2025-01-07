@@ -13,7 +13,7 @@ example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
   intro h
   have : 0.5 ^ 2 ≥ 0.5 := h 0.5
   numbers at this
-
+  done
 
 example : ¬ 3 ∣ 13 := by
   intro H
@@ -24,6 +24,7 @@ example : ¬ 3 ∣ 13 := by
       _ ≤ 3 * 4 := by rel [h4]
     numbers at h
   · sorry
+  done
 
 example {x y : ℝ} (h : x + y = 0) : ¬(x > 0 ∧ y > 0) := by
   intro h
@@ -32,10 +33,11 @@ example {x y : ℝ} (h : x + y = 0) : ¬(x > 0 ∧ y > 0) := by
   calc 0 = x + y := by rw [h]
     _ > 0 := by extra
   numbers at H
-
+  done
 
 example : ¬ (∃ n : ℕ, n ^ 2 = 2) := by
   sorry
+  done
 
 example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
   constructor
@@ -50,21 +52,11 @@ example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
     obtain h1 | h2 := Int.even_or_odd n
     · apply h1
     · contradiction
-
+  done
 
 example (n : ℤ) : Int.Odd n ↔ ¬ Int.Even n := by
   sorry
-
-example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 3]) := by
-  intro h
-  mod_cases hn : n % 3
-  · have h :=
-    calc (0:ℤ) = 0 ^ 2 := by numbers
-      _ ≡ n ^ 2 [ZMOD 3] := by rel [hn]
-      _ ≡ 2 [ZMOD 3] := by rel [h]
-    numbers at h -- contradiction!
-  · sorry
-  · sorry
+  done
 
 example {p : ℕ} (k l : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hkl : p = k * l) :
     ¬(Prime p) := by
@@ -77,7 +69,7 @@ example {p : ℕ} (k l : ℕ) (hk1 : k ≠ 1) (hkp : k ≠ p) (hkl : p = k * l) 
   obtain hk1' | hkp' := this
   · contradiction
   · contradiction
-
+  done
 
 example (a b : ℤ) (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
   intro H
@@ -92,6 +84,7 @@ example (a b : ℤ) (h : ∃ q, b * q < a ∧ a < b * (q + 1)) : ¬b ∣ a := by
     _ < b * (q + 1) := hq₂
   cancel b at h1
   sorry
+  done
 
 example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2)
     (H : ∀ (m : ℕ), 1 < m → m < T → ¬ (m ∣ p)) :
@@ -113,7 +106,7 @@ example {p : ℕ} (hp : 2 ≤ p)  (T : ℕ) (hTp : p < T ^ 2)
   · sorry
   have : ¬ l ∣ p := H l hl1 hl2
   contradiction
-
+  done
 
 example : Prime 79 := by
   apply better_prime_test (T := 9)
@@ -132,33 +125,43 @@ example : Prime 79 := by
   · sorry
   · sorry
   · sorry
+  done
 
 /-! # Exercises -/
 
 
 example : ¬ (∃ t : ℝ, t ≤ 4 ∧ t ≥ 5) := by
   sorry
+  done
 
 example : ¬ (∃ a : ℝ, a ^ 2 ≤ 8 ∧ a ^ 3 ≥ 30) := by
   sorry
+  done
 
 example : ¬ Int.Even 7 := by
   sorry
+  done
 
 example {n : ℤ} (hn : n + 3 = 7) : ¬ (Int.Even n ∧ n ^ 2 = 10) := by
   sorry
+  done
 
 example {x : ℝ} (hx : x ^ 2 < 9) : ¬ (x ≤ -3 ∨ x ≥ 3) := by
   sorry
+  done
 
 example : ¬ (∃ N : ℕ, ∀ k > N, Nat.Even k) := by
   sorry
+  done
 
 example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 4]) := by
   sorry
+  done
 
 example : ¬ Prime 1 := by
   sorry
+  done
 
 example : Prime 97 := by
   sorry
+  done
