@@ -8,32 +8,35 @@ math2001_init
 
 
 -- Example 1.4.1
-example {x y : ℤ} (hx : x + 3 ≤ 2) (hy : y + 2 * x ≥ 3) : y > 3 :=
+example {x y : ℤ} (hx : x + 3 ≤ 2) (hy : y + 2 * x ≥ 3) : y > 3 := by
   calc
     y = y + 2 * x - 2 * x := by ring
     _ ≥ 3 - 2 * x := by rel [hy]
     _ = 9 - 2 * (x + 3) := by ring
     _ ≥ 9 - 2 * 2 := by rel [hx]
     _ > 3 := by numbers
+  done
 
 -- Example 1.4.2
 -- Exercise: replace the words "sorry" with the correct Lean justification.
-example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : r ≤ 3 :=
+example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : r ≤ 3 := by
   calc
     r = (s + r + r - s) / 2 := by sorry
     _ ≤ (3 + (s + 3) - s) / 2 := by sorry
     _ = 3 := by sorry
+  done
 
 -- Example 1.4.3
 -- Exercise: type out the whole proof printed in the text as a Lean proof.
-example {x y : ℝ} (h1 : y ≤ x + 5) (h2 : x ≤ -2) : x + y < 2 :=
+example {x y : ℝ} (h1 : y ≤ x + 5) (h2 : x ≤ -2) : x + y < 2 := by
   sorry
+  done
 
 -- Example 1.4.4
 -- Exercise: replace the words "sorry" with the correct Lean justification.
 example {u v x y A B : ℝ} (h1 : 0 < A) (h2 : A ≤ 1) (h3 : 1 ≤ B) (h4 : x ≤ B)
     (h5 : y ≤ B) (h6 : 0 ≤ u) (h7 : 0 ≤ v) (h8 : u < A) (h9 : v < A) :
-    u * y + v * x + u * v < 3 * A * B :=
+    u * y + v * x + u * v < 3 * A * B := by
   calc
     u * y + v * x + u * v
       ≤ u * B + v * B + u * v := by sorry
@@ -42,10 +45,11 @@ example {u v x y A B : ℝ} (h1 : 0 < A) (h2 : A ≤ 1) (h3 : 1 ≤ B) (h4 : x �
     _ ≤ A * B + A * B + B * v := by sorry
     _ < A * B + A * B + B * A := by sorry
     _ = 3 * A * B := by sorry
+  done
 
 -- Example 1.4.5
 -- Exercise: replace the words "sorry" with the correct Lean justification.
-example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 :=
+example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 := by
   calc
     t ^ 2 - 3 * t - 17
       = t * t - 3 * t - 17 := by sorry
@@ -53,32 +57,35 @@ example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 :=
     _ = 7 * t - 17 := by sorry
     _ ≥ 7 * 10 - 17 := by sorry
     _ ≥ 5 := by sorry
+  done
 
 -- Example 1.4.6
 -- Exercise: type out the whole proof printed in the text as a Lean proof.
-example {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 :=
+example {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 := by
   sorry
+  done
 
 -- Example 1.4.7
-example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 :=
+example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 := by
   calc
     n ≤ m ^ 2 + n := by extra
     _ ≤ 2 := by rel [h]
-
+  done
 
 -- Example 1.4.8
 -- Exercise: replace the words "sorry" with the correct Lean justification.
-example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
+example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 := by
   calc
     (x + y) ^ 2 ≤ (x + y) ^ 2 + (x - y) ^ 2 := by sorry
     _ = 2 * (x ^ 2 + y ^ 2) := by sorry
     _ ≤ 2 * 1 := by sorry
     _ < 3 := by sorry
+  done
 
 -- Example 1.4.9
 -- Exercise: replace the words "sorry" with the correct Lean justification.
 example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) :
-    3 * a * b + a ≤ 7 * b + 72 :=
+    3 * a * b + a ≤ 7 * b + 72 := by
   calc
     3 * a * b + a
       ≤ 2 * b ^ 2 + a ^ 2 + (3 * a * b + a) := by sorry
@@ -87,16 +94,18 @@ example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) :
     _ = 7 * b + 9 * (a + b) := by sorry
     _ ≤ 7 * b + 9 * 8 := by sorry
     _ = 7 * b + 72 := by sorry
+  done
 
 -- Example 1.4.10
 example {a b c : ℝ} :
-    a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 :=
+    a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) ≤ (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 := by
   calc
     a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3)
       ≤ 2 * (a ^ 2 * (b ^ 2 - c ^ 2)) ^ 2 + (b ^ 4 - c ^ 4) ^ 2
           + 4 * (a ^ 2 * b * c - b ^ 2 * c ^ 2) ^ 2
           + a ^ 2 * (a ^ 6 + 8 * b ^ 3 * c ^ 3) := by extra
     _ = (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 := by ring
+  done
 
 
 /-! # Exercises
@@ -105,23 +114,30 @@ Solve these problems yourself.  You may find it helpful to solve them on paper b
 up in Lean. -/
 
 
-example {x y : ℤ} (h1 : x + 3 ≥ 2 * y) (h2 : 1 ≤ y) : x ≥ -1 :=
+example {x y : ℤ} (h1 : x + 3 ≥ 2 * y) (h2 : 1 ≤ y) : x ≥ -1 := by
   sorry
+  done
 
-example {a b : ℚ} (h1 : 3 ≤ a) (h2 : a + 2 * b ≥ 4) : a + b ≥ 3 :=
+example {a b : ℚ} (h1 : 3 ≤ a) (h2 : a + 2 * b ≥ 4) : a + b ≥ 3 := by
   sorry
+  done
 
-example {x : ℤ} (hx : x ≥ 9) : x ^ 3 - 8 * x ^ 2 + 2 * x ≥ 3 :=
+example {x : ℤ} (hx : x ≥ 9) : x ^ 3 - 8 * x ^ 2 + 2 * x ≥ 3 := by
   sorry
+  done
 
-example {n : ℤ} (hn : n ≥ 10) : n ^ 4 - 2 * n ^ 2 > 3 * n ^ 3 :=
+example {n : ℤ} (hn : n ≥ 10) : n ^ 4 - 2 * n ^ 2 > 3 * n ^ 3 := by
   sorry
+  done
 
-example {n : ℤ} (h1 : n ≥ 5) : n ^ 2 - 2 * n + 3 > 14 :=
+example {n : ℤ} (h1 : n ≥ 5) : n ^ 2 - 2 * n + 3 > 14 := by
   sorry
+  done
 
-example {x : ℚ} : x ^ 2 - 2 * x ≥ -1 :=
+example {x : ℚ} : x ^ 2 - 2 * x ≥ -1 := by
   sorry
+  done
 
-example (a b : ℝ) : a ^ 2 + b ^ 2 ≥ 2 * a * b :=
+example (a b : ℝ) : a ^ 2 + b ^ 2 ≥ 2 * a * b := by
   sorry
+  done
