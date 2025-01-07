@@ -24,8 +24,7 @@ example : Bijective p := by
     use (y + 5) / 2
     calc p ((y + 5) / 2) = 2 * ((y + 5) / 2) - 5 := by rfl
       _ = y := by ring
-
-
+  done
 
 def a (t : ℝ) : ℝ := t ^ 3 - t
 
@@ -41,7 +40,7 @@ example : ¬ Bijective a := by
       _ = 1 ^ 3 - 1 := by numbers
       _ = a 1 := by rfl
   · numbers
-
+  done
 
 inductive Celestial
   | sun
@@ -71,7 +70,7 @@ example : ¬ Bijective f := by
   use neutron
   intro x
   cases x <;> exhaust
-
+  done
 
 example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
   constructor
@@ -106,7 +105,7 @@ example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
       obtain ⟨x, hx, hx'⟩ := h y
       use x
       apply hx
-
+  done
 
 example : ∀ f : Celestial → Celestial, Injective f → Bijective f := by
   intro f hf
@@ -129,7 +128,7 @@ example : ∀ f : Celestial → Celestial, Injective f → Bijective f := by
       apply h_moon
   | moon, sun => sorry
   | moon, moon => sorry
-
+  done
 
 example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
   push_neg
@@ -149,22 +148,26 @@ example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
     intro n
     apply ne_of_gt
     extra
+  done
 
 /-! # Exercises -/
 
 
 example : Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
   sorry
+  done
 
 example : ¬ Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
   sorry
-
+  done
 
 example : Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
   sorry
+  done
 
 example : ¬ Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
   sorry
+  done
 
 inductive Element
   | fire
@@ -183,14 +186,16 @@ def e : Element → Element
 
 example : Bijective e := by
   sorry
+  done
 
 example : ¬ Bijective e := by
   sorry
-
+  done
 
 example : ∀ f : Subatomic → Subatomic, Injective f → Bijective f := by
   sorry
-
+  done
 
 example : ∀ f : Element → Element, Injective f → Bijective f := by
   sorry
+  done

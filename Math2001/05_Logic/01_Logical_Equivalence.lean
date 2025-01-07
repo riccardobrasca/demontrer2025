@@ -9,12 +9,14 @@ example {P Q : Prop} (h1 : P ∨ Q) (h2 : ¬ Q) : P := by
   obtain hP | hQ := h1
   · apply hP
   · contradiction
+  done
 
 
 example (P Q : Prop) : P → (P ∨ ¬ Q) := by
   intro hP
   left
   apply hP
+  done
 
 
 #truth_table ¬(P ∧ ¬ Q)
@@ -29,7 +31,7 @@ example (P : Prop) : (P ∨ P) ↔ P := by
   · intro h
     left
     apply h
-
+  done
 
 example (P Q R : Prop) : (P ∧ (Q ∨ R)) ↔ ((P ∧ Q) ∨ (P ∧ R)) := by
   constructor
@@ -44,6 +46,7 @@ example (P Q R : Prop) : (P ∧ (Q ∨ R)) ↔ ((P ∧ Q) ∨ (P ∧ R)) := by
       · apply h1
       · apply h2
   · sorry
+  done
 
 #truth_table P ∧ (Q ∨ R)
 #truth_table (P ∧ Q) ∨ (P ∧ R)
@@ -55,7 +58,7 @@ example {P Q : α → Prop} (h1 : ∀ x : α, P x) (h2 : ∀ x : α, Q x) :
   constructor
   · apply h1
   · apply h2
-
+  done
 
 example {P : α → β → Prop} (h : ∃ x : α, ∀ y : β, P x y) :
     ∀ y : β, ∃ x : α, P x y := by
@@ -63,7 +66,7 @@ example {P : α → β → Prop} (h : ∃ x : α, ∀ y : β, P x y) :
   intro y
   use x
   apply hx
-
+  done
 
 example (P : α → Prop) : ¬ (∃ x, P x) ↔ ∀ x, ¬ P x := by
   constructor
@@ -76,48 +79,63 @@ example (P : α → Prop) : ¬ (∃ x, P x) ↔ ∀ x, ¬ P x := by
     obtain ⟨x, hx⟩ := h'
     have : ¬ P x := h x
     contradiction
+  done
 
 /-! # Exercises -/
 
 
 example {P Q : Prop} (h : P ∧ Q) : P ∨ Q := by
   sorry
+  done
 
 example {P Q R : Prop} (h1 : P → Q) (h2 : P → R) (h3 : P) : Q ∧ R := by
   sorry
+  done
 
 example (P : Prop) : ¬(P ∧ ¬ P) := by
   sorry
+  done
 
 example {P Q : Prop} (h1 : P ↔ ¬ Q) (h2 : Q) : ¬ P := by
   sorry
+  done
 
 example {P Q : Prop} (h1 : P ∨ Q) (h2 : Q → P) : P := by
   sorry
+  done
 
 example {P Q R : Prop} (h : P ↔ Q) : (P ∧ R) ↔ (Q ∧ R) := by
   sorry
+  done
 
 example (P : Prop) : (P ∧ P) ↔ P := by
   sorry
+  done
 
 example (P Q : Prop) : (P ∨ Q) ↔ (Q ∨ P) := by
   sorry
+  done
 
 example (P Q : Prop) : ¬(P ∨ Q) ↔ (¬P ∧ ¬Q) := by
   sorry
+  done
 
 example {P Q : α → Prop} (h1 : ∀ x, P x → Q x) (h2 : ∀ x, P x) : ∀ x, Q x := by
   sorry
+  done
 
 example {P Q : α → Prop} (h : ∀ x, P x ↔ Q x) : (∃ x, P x) ↔ (∃ x, Q x) := by
   sorry
+  done
 
 example (P : α → β → Prop) : (∃ x y, P x y) ↔ ∃ y x, P x y := by
   sorry
+  done
 
 example (P : α → β → Prop) : (∀ x y, P x y) ↔ ∀ y x, P x y := by
   sorry
+  done
 
 example (P : α → Prop) (Q : Prop) : ((∃ x, P x) ∧ Q) ↔ ∃ x, (P x ∧ Q) := by
   sorry
+  done

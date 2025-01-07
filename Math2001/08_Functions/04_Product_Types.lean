@@ -19,6 +19,7 @@ example : Injective q := by
   dsimp [q] at hm
   obtain ⟨hm', hm''⟩ := hm
   addarith [hm']
+  done
 
 
 example : ¬ Surjective q := by
@@ -30,6 +31,7 @@ example : ¬ Surjective q := by
   obtain ⟨hm1, hm2⟩ := hm
   have H : 1 = -1 := by addarith [hm1, hm2]
   numbers at H
+  done
 
 
 example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
@@ -42,10 +44,12 @@ example : Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m + 2 * n)) := by
   · ext ⟨a, b⟩
     dsimp
     ring
+  done
 
 
 example : Bijective (fun ((m, n) : ℝ × ℝ) ↦ (m + n, m - n)) := by
   sorry
+  done
 
 example : ¬ Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m - n)) := by
   dsimp [Bijective, Injective, Surjective]
@@ -61,6 +65,7 @@ example : ¬ Bijective (fun ((m, n) : ℤ × ℤ) ↦ (m + n, m - n)) := by
     _ = 1 + 0 := by rw [h1, h2]
     _ = 1 := by numbers
   numbers at this
+  done
 
 
 example : Injective (fun ((x, y) : ℝ × ℝ) ↦ (x + y, x - y, y)) := by
@@ -70,6 +75,7 @@ example : Injective (fun ((x, y) : ℝ × ℝ) ↦ (x + y, x - y, y)) := by
   constructor
   · addarith [h, hy]
   · apply hy
+  done
 
 
 example : ¬ Injective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
@@ -80,13 +86,14 @@ example : ¬ Injective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   constructor
   · numbers
   · numbers
+  done
 
 example : Surjective (fun ((x, y) : ℝ × ℝ) ↦ x + y) := by
   intro a
   use (a, 0)
   dsimp
   ring
-
+  done
 
 example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 8 * n) := by
   dsimp [Injective]
@@ -95,16 +102,18 @@ example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 8 * n) := by
   constructor
   · numbers
   · numbers
+  done
 
 example : Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 8 * n) := by
   intro a
   use (-3 * a, 2 * a)
   dsimp
   ring
-
+  done
 
 example : ¬ Injective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
   sorry
+  done
 
 example : ¬ Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
   dsimp [Surjective]
@@ -117,7 +126,7 @@ example : ¬ Surjective (fun ((m, n) : ℤ × ℤ) ↦ 5 * m + 10 * n) := by
     _ = 5 * m + 10 * n := by ring
     _ = 1 := h
   numbers at this
-
+  done
 
 def g : ℝ × ℝ → ℝ × ℝ
   | (x, y) => (y, x)
@@ -125,7 +134,7 @@ def g : ℝ × ℝ → ℝ × ℝ
 example : g ∘ g = id := by
   ext ⟨x, y⟩
   dsimp [g]
-
+  done
 
 def A : ℕ → ℕ
   | 0 => 0
@@ -138,6 +147,7 @@ theorem A_mono {n m : ℕ} (h : n ≤ m) : A n ≤ A m := by
       _ ≤ A k + (k + 1) := by extra
       _ = A k + k + 1 := by ring
       _ = A (k + 1) := by rw [A]
+  done
 
 
 theorem of_A_add_mono {a1 a2 b1 b2 : ℕ} (h : A (a1 + b1) + b1 ≤ A (a2 + b2) + b2) :
@@ -154,7 +164,7 @@ theorem of_A_add_mono {a1 a2 b1 b2 : ℕ} (h : A (a1 + b1) + b1 ≤ A (a2 + b2) 
     _ ≤ A (a1 + b1) := A_mono h'
     _ ≤ A (a1 + b1) + b1 := by extra
   contradiction
-
+  done
 
 def p : ℕ × ℕ → ℕ
   | (a, b) => A (a + b) + b
@@ -178,6 +188,7 @@ theorem p_comp_i (x : ℕ × ℕ) : p (i x) = p x + 1 := by
       _ = A (a + (b + 1)) + (b + 1) := by dsimp [p]
       _ = (A ((a + 1) + b) + b) + 1 := by ring
       _ = p (a + 1, b) + 1 := by rw [p]
+  done
 
 example : Bijective p := by
   constructor
@@ -204,6 +215,7 @@ example : Bijective p := by
         _ = 0 := by rw [A]
     · intro x
       apply p_comp_i
+  done
 
 /-! # Exercises -/
 
@@ -211,30 +223,40 @@ example : Bijective p := by
 example : Bijective (fun ((r, s) : ℚ × ℚ) ↦ (s, r - s)) := by
   rw [bijective_iff_exists_inverse]
   sorry
+  done
 
 example : ¬ Injective (fun ((x, y) : ℤ × ℤ) ↦ x - 2 * y - 1) := by
   sorry
+  done
+
 example : Surjective (fun ((x, y) : ℤ × ℤ) ↦ x - 2 * y - 1) := by
   sorry
+  done
 
 example : ¬ Surjective (fun ((x, y) : ℚ × ℚ) ↦ x ^ 2 + y ^ 2) := by
   sorry
+  done
 
 example : Surjective (fun ((x, y) : ℚ × ℚ) ↦ x ^ 2 - y ^ 2) := by
   sorry
+  done
 
 example : Surjective (fun ((a, b) : ℚ × ℕ) ↦ a ^ b) := by
   sorry
+  done
 
 example : ¬ Injective
     (fun ((x, y, z) : ℝ × ℝ × ℝ) ↦ (x + y + z, x + 2 * y + 3 * z)) := by
   sorry
+  done
 
 example : Injective (fun ((x, y) : ℝ × ℝ) ↦ (x + y, x + 2 * y, x + 3 * y)) := by
   sorry
+  done
 
 def h : ℝ × ℝ × ℝ → ℝ × ℝ × ℝ
   | (x, y, z) => (y, z, x)
 
 example : h ∘ h ∘ h = id := by
   sorry
+  done

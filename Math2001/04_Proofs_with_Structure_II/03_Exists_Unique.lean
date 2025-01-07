@@ -43,6 +43,32 @@ example {x : ℚ} (hx : ∃! a : ℚ, a ^ 2 = x) : x = 0 := by
     _ = 0 := by ring
   done
 
+example : ∃! r : ℤ, 0 ≤ r ∧ r < 5 ∧ 14 ≡ r [ZMOD 5] := by
+  use 4
+  dsimp
+  constructor
+  · constructor
+    · numbers
+    constructor
+    · numbers
+    use 2
+    numbers
+  intro r hr
+  obtain ⟨hr1, hr2, q, hr3⟩ := hr
+  have :=
+    calc
+      5 * 1 < 14 - r := by addarith [hr2]
+      _ = 5 * q := by rw [hr3]
+  cancel 5 at this
+  have :=
+    calc
+      5 * q = 14 - r := by rw [hr3]
+      _ < 5 * 3 := by addarith [hr1]
+  cancel 5 at this
+  interval_cases q
+  addarith [hr3]
+  done
+
 /-! # Exercises -/
 
 
@@ -51,5 +77,9 @@ example : ∃! x : ℚ, 4 * x - 3 = 9 := by
   done
 
 example : ∃! n : ℕ, ∀ a, n ≤ a := by
+  sorry
+  done
+
+example : ∃! r : ℤ, 0 ≤ r ∧ r < 3 ∧ 11 ≡ r [ZMOD 3] := by
   sorry
   done

@@ -102,12 +102,14 @@ example (a b : ℤ) (h : 0 < b) : ∃ r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZM
   · use fdiv a b
     have Hab : fmod a b + b * fdiv a b = a := fmod_add_fdiv a b
     addarith [Hab]
+  done
 
 /-! # Exercises -/
 
 
 theorem lt_fmod_of_neg (n : ℤ) {d : ℤ} (hd : d < 0) : d < fmod n d := by
   sorry
+  done
 
 def T (n : ℤ) : ℤ :=
   if 0 < n then
@@ -120,11 +122,14 @@ termination_by T n => 3 * n - 1
 
 theorem T_eq (n : ℤ) : T n = n ^ 2 := by
   sorry
+  done
 
 theorem uniqueness (a b : ℤ) (h : 0 < b) {r s : ℤ}
     (hr : 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b])
     (hs : 0 ≤ s ∧ s < b ∧ a ≡ s [ZMOD b]) : r = s := by
   sorry
+  done
 
 example (a b : ℤ) (h : 0 < b) : ∃! r : ℤ, 0 ≤ r ∧ r < b ∧ a ≡ r [ZMOD b] := by
   sorry
+  done

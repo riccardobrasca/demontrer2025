@@ -15,6 +15,7 @@ theorem gauss_lemma {d a b : ℤ} (h1 : d ∣ a * b) (h2 : gcd a d = 1) : d ∣ 
     _ = x * (a * b) + b * y * d := by ring
     _ = x * (d * z) + b * y * d := by rw [hz]
     _ = d * (x * z + b * y) := by ring
+  done
 
 
 theorem euclid_lemma {a b p : ℕ} (hp : Prime p) (H : p ∣ a * b) : p ∣ a ∨ p ∣ b := by
@@ -36,6 +37,7 @@ theorem euclid_lemma {a b p : ℕ} (hp : Prime p) (H : p ∣ a * b) : p ∣ a �
   · left
     rw [← hgcd_p]
     apply hap1
+  done
 
 
 theorem euclid_lemma_pow (a k p : ℕ) (hp : Prime p) (hk : 1 ≤ k) (H : p ∣ a ^ k) :
@@ -51,3 +53,4 @@ theorem euclid_lemma_pow (a k p : ℕ) (hp : Prime p) (hk : 1 ≤ k) (H : p ∣ 
   · apply h1
   · apply IH
     apply h2
+  done

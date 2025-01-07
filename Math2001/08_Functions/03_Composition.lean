@@ -19,6 +19,7 @@ example : g ∘ f = h := by
     _ = 2 * (x + 3) := by rfl
     _ = 2 * x + 6 := by ring
     _ = h x := by rfl
+  done
 
 
 def s (x : ℝ) : ℝ := 5 - x
@@ -27,6 +28,7 @@ example : s ∘ s = id := by
   ext x
   dsimp [s]
   ring
+  done
 
 
 def Inverse (f : X → Y) (g : Y → X) : Prop := g ∘ f = id ∧ f ∘ g = id
@@ -61,6 +63,7 @@ example : Inverse p q := by
     cases x <;> exhaust
   · ext x
     cases x <;> exhaust
+  done
 
 
 theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
@@ -82,7 +85,7 @@ theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
   · -- prove `f ∘ g = id`
     ext y
     apply hg
-
+  done
 
 theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) :
     Bijective f := by
@@ -136,10 +139,6 @@ def c : Humour → Humour
   | phlegmatic => sorry
   | sanguine => sorry
 
-example : b ∘ a = c := by
-  ext x
-  cases x <;> exhaust
-
 
 def u (x : ℝ) : ℝ := 5 * x + 1
 
@@ -147,21 +146,27 @@ noncomputable def v (x : ℝ) : ℝ := sorry
 
 example : Inverse u v := by
   sorry
+  done
 
 example {f : X → Y} (hf : Injective f) {g : Y → Z} (hg : Injective g) :
     Injective (g ∘ f) := by
   sorry
+  done
 
 example {f : X → Y} (hf : Surjective f) {g : Y → Z} (hg : Surjective g) :
     Surjective (g ∘ f) := by
   sorry
+  done
 
 example {f : X → Y} (hf : Surjective f) : ∃ g : Y → X, f ∘ g = id := by
   sorry
+  done
 
 example {f : X → Y} {g : Y → X} (h : Inverse f g) : Inverse g f := by
   sorry
+  done
 
 example {f : X → Y} {g1 g2 : Y → X} (h1 : Inverse f g1) (h2 : Inverse f g2) :
     g1 = g2 := by
   sorry
+  done

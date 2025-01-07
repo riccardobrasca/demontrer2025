@@ -14,14 +14,16 @@ open Set
 example : 1 ∈ {n : ℤ | n ≤ 3} := by
   dsimp
   numbers
-
+  done
 
 namespace Nat
-example : 10 ∉ {n : ℕ | Odd n} := by
+ example : 10 ∉ {n : ℕ | Odd n} := by
   dsimp
   rw [← even_iff_not_odd]
   use 5
   numbers
+  done
+
 end Nat
 
 
@@ -32,6 +34,7 @@ example : {a : ℕ | 4 ∣ a} ⊆ {b : ℕ | 2 ∣ b} := by
   use 2 * k
   calc a = 4 * k := hk
     _ = 2 * (2 * k) := by ring
+  done
 
 
 example : {x : ℝ | 0 ≤ x ^ 2} ⊈ {t : ℝ | 0 ≤ t} := by
@@ -41,7 +44,7 @@ example : {x : ℝ | 0 ≤ x ^ 2} ⊈ {t : ℝ | 0 ≤ t} := by
   constructor
   · numbers
   · numbers
-
+    done
 
 example : {x : ℤ | Int.Odd x} = {a : ℤ | ∃ k, a = 2 * k - 1} := by
   ext x
@@ -57,7 +60,7 @@ example : {x : ℤ | Int.Odd x} = {a : ℤ | ∃ k, a = 2 * k - 1} := by
     use k - 1
     calc x = 2 * k - 1 := by rw [hk]
       _ = 2 * (k - 1) + 1 := by ring
-
+  done
 
 example : {a : ℕ | 4 ∣ a} ≠ {b : ℕ | 2 ∣ b} := by
   ext
@@ -71,7 +74,7 @@ example : {a : ℕ | 4 ∣ a} ≠ {b : ℕ | 2 ∣ b} := by
     constructor <;> numbers
   · use 3
     numbers
-
+  done
 
 example : {k : ℤ | 8 ∣ 5 * k} = {l : ℤ | 8 ∣ l} := by
   ext n
@@ -89,7 +92,7 @@ example : {k : ℤ | 8 ∣ 5 * k} = {l : ℤ | 8 ∣ l} := by
     use 5 * a
     calc 5 * n = 5 * (8 * a) := by rw [ha]
       _ = 8 * (5 * a) := by ring
-
+  done
 
 example : {x : ℝ | x ^ 2 - x - 2 = 0} = {-1, 2} := by
   ext x
@@ -112,7 +115,7 @@ example : {x : ℝ | x ^ 2 - x - 2 = 0} = {-1, 2} := by
         _ = 0 := by numbers
     · calc x ^ 2 - x - 2 = 2 ^ 2 - 2 - 2 := by rw [h]
         _ = 0 := by numbers
-
+  done
 
 example : {1, 3, 6} ⊆ {t : ℚ | t < 10} := by
   dsimp [Set.subset_def]
@@ -121,102 +124,127 @@ example : {1, 3, 6} ⊆ {t : ℚ | t < 10} := by
   · addarith [h1]
   · addarith [h3]
   · addarith [h6]
+  done
 
 /-! # Exercises -/
 
 
 example : 4 ∈ {a : ℚ | a < 3} := by
   sorry
+  done
 
 example : 4 ∉ {a : ℚ | a < 3} := by
   sorry
+  done
 
 example : 6 ∈ {n : ℕ | n ∣ 42} := by
   sorry
+  done
 
 example : 6 ∉ {n : ℕ | n ∣ 42} := by
   sorry
-
+  done
 
 example : 8 ∈ {k : ℤ | 5 ∣ k} := by
   sorry
+  done
 
 example : 8 ∉ {k : ℤ | 5 ∣ k} := by
   sorry
+  done
 
 example : 11 ∈ {n : ℕ | Odd n} := by
   sorry
+  done
 
 example : 11 ∉ {n : ℕ | Odd n} := by
   sorry
-
+  done
 
 example : -3 ∈ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
   sorry
+  done
 
 example : -3 ∉ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
   sorry
-
+  done
 
 example : {a : ℕ | 20 ∣ a} ⊆ {x : ℕ | 5 ∣ x} := by
   sorry
+  done
 
 example : {a : ℕ | 20 ∣ a} ⊈ {x : ℕ | 5 ∣ x} := by
   sorry
-
+  done
 
 example : {a : ℕ | 5 ∣ a} ⊆ {x : ℕ | 20 ∣ x} := by
   sorry
+  done
 
 example : {a : ℕ | 5 ∣ a} ⊈ {x : ℕ | 20 ∣ x} := by
   sorry
+  done
 
 example : {r : ℤ | 3 ∣ r} ⊆ {s : ℤ | 0 ≤ s} := by
   sorry
+  done
 
 example : {r : ℤ | 3 ∣ r} ⊈ {s : ℤ | 0 ≤ s} := by
   sorry
+  done
 
 example : {m : ℤ | m ≥ 10} ⊆ {n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n} := by
   sorry
+  done
 
 example : {m : ℤ | m ≥ 10} ⊈ {n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n} := by
   sorry
-
+  done
 
 namespace Int
 example : {n : ℤ | Even n} = {a : ℤ | a ≡ 6 [ZMOD 2]} := by
   sorry
+  done
 
 example : {n : ℤ | Even n} ≠ {a : ℤ | a ≡ 6 [ZMOD 2]} := by
   sorry
+  done
+
 end Int
 
 
 example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} = {4} := by
   sorry
+  done
 
 example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} ≠ {4} := by
   sorry
+  done
 
 example : {k : ℤ | 8 ∣ 6 * k} = {l : ℤ | 8 ∣ l} := by
   sorry
+  done
 
 example : {k : ℤ | 8 ∣ 6 * k} ≠ {l : ℤ | 8 ∣ l} := by
   sorry
+  done
 
 example : {k : ℤ | 7 ∣ 9 * k} = {l : ℤ | 7 ∣ l} := by
   sorry
+  done
 
 example : {k : ℤ | 7 ∣ 9 * k} ≠ {l : ℤ | 7 ∣ l} := by
   sorry
-
+  done
 
 example : {1, 2, 3} = {1, 2} := by
   sorry
+  done
 
 example : {1, 2, 3} ≠ {1, 2} := by
   sorry
+  done
 
 example : {x : ℝ | x ^ 2 + 3 * x + 2 = 0} = {-1, -2} := by
   sorry
+  done

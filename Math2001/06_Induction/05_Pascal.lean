@@ -75,6 +75,7 @@ example (a b : ℕ) : (pascal a b : ℚ) = (a + b)! / (a ! * b !) := by
   norm_cast
   calc pascal a b * (a ! * b !) = pascal a b * a ! * b ! := by ring
     _ = (a + b)! := by apply pascal_eq
+  done
 
 /-! # Exercises -/
 
@@ -90,3 +91,4 @@ termination_by _ a b => a + b
 
 example (a : ℕ) : pascal a 1 = a + 1 := by
   sorry
+  done

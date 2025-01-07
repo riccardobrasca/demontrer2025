@@ -13,6 +13,7 @@ open Int
     apply h1
   calc -b < 0 := by addarith [h1]
     _ ≤ _ := H
+  done
 
 @[decreasing] theorem lower_bound_fmod2 (a b : ℤ) (h1 : b < 0) : b < fmod a (-b) := by
   have H : 0 ≤ fmod a (-b)
@@ -21,14 +22,17 @@ open Int
   have h2 : 0 < -b := by addarith [h1]
   calc b < 0 := h1
     _ ≤ fmod a (-b) := H
+  done
 
 @[decreasing] theorem upper_bound_fmod2 (a b : ℤ) (h1 : b < 0) : fmod a (-b) < -b := by
   apply fmod_lt_of_pos
   addarith [h1]
+  done
 
 @[decreasing] theorem upper_bound_fmod1 (a b : ℤ) (h1 : 0 < b) : fmod a b < b := by
   apply fmod_lt_of_pos
   apply h1
+  done
 
 def gcd (a b : ℤ) : ℤ :=
   if 0 < b then
@@ -113,6 +117,7 @@ theorem gcd_dvd_right (a b : ℤ) : gcd a b ∣ b := by
     use 0
     calc b = 0 := hb
       _ = -a * 0 := by ring
+  done
 
 theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
   rw [gcd]
@@ -147,6 +152,7 @@ theorem gcd_dvd_left (a b : ℤ) : gcd a b ∣ a := by
   · -- case `b = 0`, `a < 0`
     use -1
     ring
+  done
 
 end
 termination_by gcd_dvd_right a b => b ; gcd_dvd_left a b => b
@@ -222,3 +228,4 @@ theorem bezout (a b : ℤ) : ∃ x y : ℤ, x * a + y * b = gcd a b := by
 
 theorem gcd_maximal {d a b : ℤ} (ha : d ∣ a) (hb : d ∣ b) : d ∣ gcd a b := by
   sorry
+  done

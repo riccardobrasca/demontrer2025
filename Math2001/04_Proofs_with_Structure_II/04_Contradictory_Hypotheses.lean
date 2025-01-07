@@ -36,6 +36,23 @@ example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
   numbers at H -- this is a contradiction!
   done
 
+example (n : ℤ) (hn : n ^ 2 + n + 1 ≡ 1 [ZMOD 3]) :
+    n ≡ 0 [ZMOD 3] ∨ n ≡ 2 [ZMOD 3] := by
+  mod_cases h : n % 3
+  · -- case 1: `n ≡ 0 [ZMOD 3]`
+    left
+    apply h
+  · -- case 2: `n ≡ 1 [ZMOD 3]`
+    have H :=
+      calc 0 ≡ 0 + 3 * 1 [ZMOD 3] := by extra
+      _ = 1 ^ 2 + 1 + 1 := by numbers
+      _ ≡ n ^ 2 + n + 1 [ZMOD 3] := by rel [h]
+      _ ≡ 1 [ZMOD 3] := hn
+    numbers at H -- contradiction!
+  · -- case 3: `n ≡ 2 [ZMOD 3]`
+    right
+    apply h
+  done
 
 example {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p) : Prime p := by
   constructor

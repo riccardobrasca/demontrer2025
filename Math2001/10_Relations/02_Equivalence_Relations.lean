@@ -17,14 +17,17 @@ local infix:50 "∼" => fun (x y : ℤ) ↦ x ≡ y [ZMOD n]
 example : Reflexive (· ∼ ·) := by
   dsimp [Reflexive]
   apply Int.ModEq.refl
+  done
 
 example : Symmetric (· ∼ ·) := by
   dsimp [Symmetric]
   apply Int.ModEq.symm
+  done
 
 example : Transitive (· ∼ ·) := by
   dsimp [Transitive]
   apply Int.ModEq.trans
+  done
 
 end
 
@@ -37,17 +40,20 @@ example : Reflexive (· ∼ ·) := by
   dsimp [Reflexive]
   intro x
   ring
+  done
 
 example : Symmetric (· ∼ ·) := by
   dsimp [Symmetric]
   intro x y hxy
   rw [hxy]
+  done
 
 example : Transitive (· ∼ ·) := by
   dsimp [Transitive]
   intro x y z hxy hyz
   calc x ^ 2 = y ^ 2 := by rw [hxy]
     _ = z ^ 2 := by rw [hyz]
+  done
 
 end
 
@@ -76,12 +82,14 @@ theorem EquivalenceClass.eq_of_rel (h_symm : @Symmetric α r) (h_trans : @Transi
     · apply ha1b
   · intro ha2b
     apply h_trans ha ha2b
+  done
 
 
 theorem EquivalenceClass.mem_self (h_refl : @Reflexive α r) (a : α) :
     a ∈ { b : α | a ∼ b } := by
   dsimp
   apply h_refl
+  done
 
 end
 
@@ -94,12 +102,14 @@ example : Reflexive (· ∼ ·) := by
   dsimp [Reflexive]
   intro (a, b)
   dsimp
+  done
 
 example : Symmetric (· ∼ ·) := by
   dsimp [Symmetric]
   intro (a, b) (c, d) h
   dsimp at *
   rw [h]
+  done
 
 example : Transitive (· ∼ ·) := by
   dsimp [Transitive]
@@ -115,6 +125,7 @@ example : Transitive (· ∼ ·) := by
     _ = (e * D) * B := by rw [h2]
     _ = D * (e * B) := by ring
   cancel D at this
+  done
 
 end
 
@@ -132,6 +143,7 @@ example : Reflexive (· ∼ ·) := by
   constructor
   · rfl
   · rfl
+  done
 
 example : Symmetric (· ∼ ·) := by
   dsimp [Symmetric]
@@ -145,6 +157,7 @@ example : Symmetric (· ∼ ·) := by
   constructor
   · apply hfg2
   · apply hfg1
+  done
 
 example : Transitive (· ∼ ·) := by
   dsimp [Transitive]
@@ -159,6 +172,7 @@ example : Transitive (· ∼ ·) := by
   · apply Surjective.comp
     · apply hf2b
     · apply hf1b
+  done
 
 end
 /-! # Exercises -/
@@ -169,12 +183,15 @@ local infix:50 "∼" => fun (a b : ℤ) ↦ ∃ m n, m > 0 ∧ n > 0 ∧ a * m =
 
 example : Reflexive (· ∼ ·) := by
   sorry
+  done
 
 example : Symmetric (· ∼ ·) := by
   sorry
+  done
 
 example : Transitive (· ∼ ·) := by
   sorry
+  done
 
 end
 
@@ -184,12 +201,15 @@ local infix:50 "∼" => fun ((a, b) : ℕ × ℕ) (c, d) ↦ a + d = b + c
 
 example : Reflexive (· ∼ ·) := by
   sorry
+  done
 
 example : Symmetric (· ∼ ·) := by
   sorry
+  done
 
 example : Transitive (· ∼ ·) := by
   sorry
+  done
 
 end
 
@@ -200,11 +220,14 @@ local infix:50 "∼" => fun ((a, b) : ℤ × ℤ) (c, d) ↦
 
 example : Reflexive (· ∼ ·) := by
   sorry
+  done
 
 example : Symmetric (· ∼ ·) := by
   sorry
+  done
 
 example : Transitive (· ∼ ·) := by
   sorry
+  done
 
 end

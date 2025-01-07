@@ -28,7 +28,7 @@ example (n : ℕ) : a n = 2 ^ n + (-1) ^ n := by
       = a (k + 1) + 2 * a k := by rw [a]
     _ = (2 ^ (k + 1) + (-1) ^ (k + 1)) + 2 * (2 ^ k + (-1) ^ k) := by rw [IH1, IH2]
     _ = (2 : ℤ) ^ (k + 2) + (-1) ^ (k + 2) := by ring
-
+  done
 
 example {m : ℕ} (hm : 1 ≤ m) : a m ≡ 1 [ZMOD 6] ∨ a m ≡ 5 [ZMOD 6] := by
   have H : ∀ n : ℕ, 1 ≤ n →
@@ -63,7 +63,7 @@ example {m : ℕ} (hm : 1 ≤ m) : a m ≡ 1 [ZMOD 6] ∨ a m ≡ 5 [ZMOD 6] := 
     apply H1
   · right
     apply H1
-
+  done
 
 def F : ℕ → ℤ
   | 0 => 1
@@ -81,7 +81,7 @@ example (n : ℕ) : F n ≤ 2 ^ n := by
       _ ≤ 2 ^ (k + 1) + 2 ^ k := by rel [IH1, IH2]
       _ ≤ 2 ^ (k + 1) + 2 ^ k + 2 ^ k := by extra
       _ = 2 ^ (k + 2) := by ring
-
+  done
 
 example (n : ℕ) : F (n + 1) ^ 2 - F (n + 1) * F n - F n ^ 2 = - (-1) ^ n := by
   simple_induction n with k IH
@@ -93,7 +93,7 @@ example (n : ℕ) : F (n + 1) ^ 2 - F (n + 1) * F n - F n ^ 2 = - (-1) ^ n := by
       _ = - (F (k + 1) ^ 2 - F (k + 1) * F k - F k ^ 2) := by ring
       _ = - -(-1) ^ k := by rw [IH]
       _ = -(-1) ^ (k + 1) := by ring
-
+  done
 
 def d : ℕ → ℤ
   | 0 => 3
@@ -131,6 +131,7 @@ example : forall_sufficiently_large n : ℕ, d n ≥ 4 ^ n := by
     _ = 16 * 4 ^ k + 4 ^ k := by ring
     _ ≥ 16 * 4 ^ k := by extra
     _ = 4 ^ (k + 2) := by ring
+  done
 
 /-! # Exercises -/
 
@@ -142,6 +143,7 @@ def b : ℕ → ℤ
 
 example (n : ℕ) : b n = 3 ^ n - 2 ^ n := by
   sorry
+  done
 
 def c : ℕ → ℤ
   | 0 => 3
@@ -150,6 +152,7 @@ def c : ℕ → ℤ
 
 example (n : ℕ) : c n = 2 * 2 ^ n + (-2) ^ n := by
   sorry
+  done
 
 def t : ℕ → ℤ
   | 0 => 5
@@ -158,6 +161,7 @@ def t : ℕ → ℤ
 
 example (n : ℕ) : t n = 2 * n + 5 := by
   sorry
+  done
 
 def q : ℕ → ℤ
   | 0 => 1
@@ -166,6 +170,7 @@ def q : ℕ → ℤ
 
 example (n : ℕ) : q n = (n:ℤ) ^ 3 + 1 := by
   sorry
+  done
 
 def s : ℕ → ℤ
   | 0 => 2
@@ -174,6 +179,7 @@ def s : ℕ → ℤ
 
 example (m : ℕ) : s m ≡ 2 [ZMOD 5] ∨ s m ≡ 3 [ZMOD 5] := by
   sorry
+  done
 
 def p : ℕ → ℤ
   | 0 => 2
@@ -182,6 +188,7 @@ def p : ℕ → ℤ
 
 example (m : ℕ) : p m ≡ 2 [ZMOD 7] ∨ p m ≡ 3 [ZMOD 7] := by
   sorry
+  done
 
 def r : ℕ → ℤ
   | 0 => 2
@@ -190,7 +197,9 @@ def r : ℕ → ℤ
 
 example : forall_sufficiently_large n : ℕ, r n ≥ 2 ^ n := by
   sorry
+  done
 
 example : forall_sufficiently_large n : ℕ,
     (0.4:ℚ) * 1.6 ^ n < F n ∧ F n < (0.5:ℚ) * 1.7 ^ n := by
   sorry
+  done

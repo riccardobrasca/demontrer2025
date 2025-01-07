@@ -34,7 +34,7 @@ example (n : ℕ) : Odd (b n) := by
     calc b (k + 1) = b k ^ 2 - 2 := by rw [b]
       _ = (2 * x + 1) ^ 2 - 2 := by rw [hx]
       _ = 2 * (2 * x ^ 2 + 2 * x - 1) + 1 := by ring
-
+  done
 
 def x : ℕ → ℤ
   | 0 => 5
@@ -47,6 +47,7 @@ example (n : ℕ) : x n ≡ 1 [ZMOD 4] := by
     sorry
   · -- inductive step
     sorry
+  done
 
 example (n : ℕ) : x n = 2 ^ (n + 2) + 1 := by
   simple_induction n with k IH
@@ -57,7 +58,7 @@ example (n : ℕ) : x n = 2 ^ (n + 2) + 1 := by
     calc x (k + 1) = 2 * x k - 1 := by rw [x]
       _ = 2 * (2 ^ (k + 2) + 1) - 1 := by rw [IH]
       _ = 2 ^ ((k + 1) + 2) + 1 := by ring
-
+  done
 
 def A : ℕ → ℚ
   | 0 => 0
@@ -74,8 +75,7 @@ example (n : ℕ) : A n = n * (n + 1) / 2 := by
       A (k + 1) = A k + (k + 1) := by rw [A]
       _ = k * (k + 1) / 2 + (k + 1) := by rw [IH]
       _ = (k + 1) * (k + 1 + 1) / 2 := by ring
-
-
+  done
 
 def factorial : ℕ → ℕ
   | 0 => 1
@@ -96,10 +96,11 @@ example (n : ℕ) : ∀ d, 1 ≤ d → d ≤ n → d ∣ n ! := by
       sorry
     · -- case 2: `d < k + 1`
       sorry
+  done
 
 example (n : ℕ) : (n + 1)! ≥ 2 ^ n := by
   sorry
-
+  done
 
 /-! # Exercises -/
 
@@ -110,9 +111,11 @@ def c : ℕ → ℤ
 
 example (n : ℕ) : Odd (c n) := by
   sorry
+  done
 
 example (n : ℕ) : c n = 2 * 3 ^ n + 5 := by
   sorry
+  done
 
 def y : ℕ → ℕ
   | 0 => 2
@@ -120,6 +123,7 @@ def y : ℕ → ℕ
 
 example (n : ℕ) : y n = 2 ^ (2 ^ n) := by
   sorry
+  done
 
 def B : ℕ → ℚ
   | 0 => 0
@@ -127,6 +131,7 @@ def B : ℕ → ℚ
 
 example (n : ℕ) : B n = n * (n + 1) * (2 * n + 1) / 6 := by
   sorry
+  done
 
 def S : ℕ → ℚ
   | 0 => 1
@@ -134,12 +139,16 @@ def S : ℕ → ℚ
 
 example (n : ℕ) : S n = 2 - 1 / 2 ^ n := by
   sorry
+  done
 
 example (n : ℕ) : 0 < n ! := by
   sorry
+  done
 
 example {n : ℕ} (hn : 2 ≤ n) : Nat.Even (n !) := by
   sorry
+  done
 
 example (n : ℕ) : (n + 1) ! ≤ (n + 1) ^ n := by
   sorry
+  done

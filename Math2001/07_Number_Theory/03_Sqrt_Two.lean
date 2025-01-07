@@ -13,7 +13,7 @@ math2001_init
     _ = 2 * k ^ 2 := by ring
     _ = b ^ 2 := by rw [hab]
   cancel 2 at h
-
+  done
 
 
 theorem irrat_aux (a b : ℕ) (hb : b ≠ 0) : a ^ 2 ≠ 2 * b ^ 2 := by
@@ -45,7 +45,7 @@ example : ¬ ∃ a b : ℕ, b ≠ 0 ∧ a ^ 2 = 2 * b ^ 2 := by
   obtain ⟨a, b, hb, hab⟩ := h
   have := irrat_aux a b hb
   contradiction
-
+  done
 
 example : ¬ ∃ a b : ℤ, b ≠ 0 ∧ b ^ 2 = 2 * a ^ 2 := by
   intro h
@@ -73,3 +73,4 @@ example : ¬ ∃ a b : ℤ, b ≠ 0 ∧ b ^ 2 = 2 * a ^ 2 := by
   cancel d ^ 2 at key
   have := sq_ne_two (2 * k * y + l * x)
   contradiction
+  done

@@ -18,7 +18,7 @@ example (t : ℝ) : t ∈ {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} := by
     addarith [h]
   · left
     addarith [h]
-
+  done
 
 example : {1, 2} ∪ {2, 4} = {1, 2, 4} := by
   ext n
@@ -35,13 +35,13 @@ example : {1, 2} ∪ {2, 4} = {1, 2, 4} := by
     · sorry
     · sorry
   · sorry
-
+  done
 
 example : {2, 1} ∪ {2, 4} = {1, 2, 4} := by
   ext n
   dsimp
   exhaust
-
+  done
 
 example : {-2, 3} ∩ {x : ℚ | x ^ 2 = 9} ⊆ {a : ℚ | 0 < a} := by
   dsimp [Set.subset_def]
@@ -52,32 +52,36 @@ example : {-2, 3} ∩ {x : ℚ | x ^ 2 = 9} ⊆ {a : ℚ | 0 < a} := by
       _ = 9 := by rw [h2]
     numbers at this
   · addarith [h1]
-
+  done
 
 example : {n : ℕ | 4 ≤ n} ∩ {n : ℕ | n < 7} ⊆ {4, 5, 6} := by
   dsimp [Set.subset_def]
   intro n h
   obtain ⟨h1, h2⟩ := h
   interval_cases n <;> exhaust
-
+  done
 
 namespace Int
+
 example : {n : ℤ | Even n}ᶜ = {n : ℤ | Odd n} := by
   ext n
   dsimp
   rw [odd_iff_not_even]
+  done
+
 end Int
 
 
 example (x : ℤ) : x ∉ ∅ := by
   dsimp
   exhaust
+  done
 
 example (U : Set ℤ) : ∅ ⊆ U := by
   dsimp [Set.subset_def]
   intro x
   exhaust
-
+  done
 
 example : {n : ℤ | n ≡ 1 [ZMOD 5]} ∩ {n : ℤ | n ≡ 2 [ZMOD 5]} = ∅ := by
   ext x
@@ -91,7 +95,7 @@ example : {n : ℤ | n ≡ 1 [ZMOD 5]} ∩ {n : ℤ | n ≡ 2 [ZMOD 5]} = ∅ :=
     numbers at this
   · intro hx
     contradiction
-
+  done
 
 example : {n : ℤ | n ≡ 1 [ZMOD 5]} ∩ {n : ℤ | n ≡ 2 [ZMOD 5]} = ∅ := by
   ext x
@@ -103,15 +107,17 @@ example : {n : ℤ | n ≡ 1 [ZMOD 5]} ∩ {n : ℤ | n ≡ 2 [ZMOD 5]} = ∅ :=
   calc 1 ≡ x [ZMOD 5] := by rel [hx1]
     _ ≡ 2 [ZMOD 5] := by rel [hx2]
   numbers at this
+  done
 
-
-example (x : ℤ) : x ∈ univ := by dsimp
+example (x : ℤ) : x ∈ univ := by
+  dsimp
+  done
 
 example (U : Set ℤ) : U ⊆ univ := by
   dsimp [Set.subset_def]
   intro x
   exhaust
-
+  done
 
 example : {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} = univ := by
   ext t
@@ -122,6 +128,7 @@ example : {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} = univ := by
     addarith [h]
   · left
     addarith [h]
+  done
 
 /-! # Exercises -/
 
@@ -129,26 +136,19 @@ example : {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} = univ := by
 macro "check_equality_of_explicit_sets" : tactic => `(tactic| (ext; dsimp; exhaust))
 
 
-example : {-1, 2, 4, 4} ∪ {3, -2, 2} = sorry := by check_equality_of_explicit_sets
-
-example : {0, 1, 2, 3, 4} ∩ {0, 2, 4, 6, 8} = sorry := by
-  check_equality_of_explicit_sets
-
-example : {1, 2} ∩ {3} = sorry := by check_equality_of_explicit_sets
-
-example : {3, 4, 5}ᶜ ∩ {1, 3, 5, 7, 9} = sorry := by
-  check_equality_of_explicit_sets
-
 example : {r : ℤ | r ≡ 7 [ZMOD 10] }
     ⊆ {s : ℤ | s ≡ 1 [ZMOD 2]} ∩ {t : ℤ | t ≡ 2 [ZMOD 5]} := by
   sorry
+  done
 
 example : {n : ℤ | 5 ∣ n} ∩ {n : ℤ | 8 ∣ n} ⊆ {n : ℤ | 40 ∣ n} := by
   sorry
+  done
 
 example :
     {n : ℤ | 3 ∣ n} ∪ {n : ℤ | 2 ∣ n} ⊆ {n : ℤ | n ^ 2 ≡ 1 [ZMOD 6]}ᶜ := by
   sorry
+  done
 
 def SizeAtLeastTwo (s : Set X) : Prop := ∃ x1 x2 : X, x1 ≠ x2 ∧ x1 ∈ s ∧ x2 ∈ s
 def SizeAtLeastThree (s : Set X) : Prop :=
@@ -158,3 +158,4 @@ example {s t : Set X} (hs : SizeAtLeastTwo s) (ht : SizeAtLeastTwo t)
     (hst : ¬ SizeAtLeastTwo (s ∩ t)) :
     SizeAtLeastThree (s ∪ t) := by
   sorry
+  done

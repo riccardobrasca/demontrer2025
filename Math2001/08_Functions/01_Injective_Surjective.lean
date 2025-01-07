@@ -37,7 +37,7 @@ example : Injective q := by
   intro x1 x2 h
   dsimp [q] at h
   addarith [h]
-
+  done
 
 example : ¬ Injective (fun x : ℝ ↦ x ^ 2) := by
   dsimp [Injective]
@@ -46,7 +46,7 @@ example : ¬ Injective (fun x : ℝ ↦ x ^ 2) := by
   constructor
   · numbers
   · numbers
-
+  done
 
 def s (a : ℚ) : ℚ := 3 * a + 2
 
@@ -56,7 +56,7 @@ example : Surjective s := by
   use (y - 2) / 3
   calc s ((y - 2) / 3) = 3 * ((y - 2) / 3) + 2 := by rw [s]
     _ = y := by ring
-
+  done
 
 example : ¬ Surjective (fun x : ℝ ↦ x ^ 2) := by
   dsimp [Surjective]
@@ -66,6 +66,7 @@ example : ¬ Surjective (fun x : ℝ ↦ x ^ 2) := by
   apply ne_of_gt
   calc -1 < 0 := by numbers
     _ ≤ x ^ 2 := by extra
+  done
 
 
 inductive Musketeer
@@ -89,7 +90,7 @@ example : ¬ Injective f := by
   use athos, porthos
   dsimp [f] -- optional
   exhaust
-
+  done
 
 example : ¬ Surjective f := by
   dsimp [Surjective]
@@ -100,7 +101,7 @@ example : ¬ Surjective f := by
   · exhaust
   · exhaust
   · exhaust
-
+  done
 
 -- better (more automated) version of the previous proof
 example : ¬ Surjective f := by
@@ -109,7 +110,7 @@ example : ¬ Surjective f := by
   use porthos
   intro a
   cases a <;> exhaust
-
+  done
 
 def g : Musketeer → Musketeer
   | athos => porthos
@@ -121,7 +122,7 @@ example : Injective g := by
   dsimp [Injective]
   intro x1 x2 hx
   cases x1 <;> cases x2 <;> exhaust
-
+  done
 
 example : Surjective g := by
   dsimp [Surjective]
@@ -133,7 +134,7 @@ example : Surjective g := by
     exhaust
   · use porthos
     exhaust
-
+  done
 
 
 example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
@@ -164,55 +165,66 @@ example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
           _ = 2 * 0 := by rw [H2]
           _ = 0 := by ring
       numbers at this -- contradiction!
+  done
 
 /-! # Exercises -/
 
 
 example : Injective (fun (x : ℚ) ↦ x - 12) := by
   sorry
+  done
 
 example : ¬ Injective (fun (x : ℚ) ↦ x - 12) := by
   sorry
-
+  done
 
 example : Injective (fun (x : ℝ) ↦ 3) := by
   sorry
+  done
 
 example : ¬ Injective (fun (x : ℝ) ↦ 3) := by
   sorry
+  done
 
 example : Injective (fun (x : ℚ) ↦ 3 * x - 1) := by
   sorry
+  done
 
 example : ¬ Injective (fun (x : ℚ) ↦ 3 * x - 1) := by
   sorry
-
+  done
 
 example : Injective (fun (x : ℤ) ↦ 3 * x - 1) := by
   sorry
+  done
 
 example : ¬ Injective (fun (x : ℤ) ↦ 3 * x - 1) := by
   sorry
-
+  done
 
 example : Surjective (fun (x : ℝ) ↦ 2 * x) := by
   sorry
+  done
 
 example : ¬ Surjective (fun (x : ℝ) ↦ 2 * x) := by
   sorry
-
+  done
 
 example : Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
+  done
 
 example : ¬ Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
+  done
 
 example : Surjective (fun (n : ℕ) ↦ n ^ 2) := by
   sorry
+  done
 
 example : ¬ Surjective (fun (n : ℕ) ↦ n ^ 2) := by
   sorry
+  done
 
 inductive White
   | meg
@@ -228,15 +240,19 @@ def h : Musketeer → White
 
 example : Injective h := by
   sorry
+  done
 
 example : ¬ Injective h := by
   sorry
+  done
 
 example : Surjective h := by
   sorry
+  done
 
 example : ¬ Surjective h := by
   sorry
+  done
 
 
 def l : White → Musketeer
@@ -245,48 +261,61 @@ def l : White → Musketeer
 
 example : Injective l := by
   sorry
+  done
 
 example : ¬ Injective l := by
   sorry
-
+  done
 
 example : Surjective l := by
   sorry
+  done
 
 example : ¬ Surjective l := by
   sorry
+  done
 
 example (f : X → Y) : Injective f ↔ ∀ x1 x2 : X, x1 ≠ x2 → f x1 ≠ f x2 := by
   sorry
+  done
 
 example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
   sorry
+  done
 
 example : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
   sorry
-
+  done
 
 example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
   sorry
+  done
 
 example : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
   sorry
+  done
 
 example : ∀ (f : ℤ → ℤ), Surjective f → Surjective (fun x ↦ 2 * f x) := by
   sorry
+  done
 
 example : ¬ ∀ (f : ℤ → ℤ), Surjective f → Surjective (fun x ↦ 2 * f x) := by
   sorry
+  done
 
 example : ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
   sorry
+  done
 
 example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
   sorry
+  done
 
 example {f : ℚ → ℚ} (hf : ∀ x y, x < y → f x < f y) : Injective f := by
   sorry
+  done
 
 example {f : X → ℕ} {x0 : X} (h0 : f x0 = 0) {i : X → X}
     (hi : ∀ x, f (i x) = f x + 1) : Surjective f := by
   sorry
+  done

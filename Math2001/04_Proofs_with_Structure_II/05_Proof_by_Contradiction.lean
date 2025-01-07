@@ -54,6 +54,18 @@ example (n : ℤ) : Int.Even n ↔ ¬ Int.Odd n := by
     · contradiction
   done
 
+example (n : ℤ) : ¬(n ^ 2 ≡ 2 [ZMOD 3]) := by
+  intro h
+  mod_cases hn : n % 3
+  · have h :=
+    calc (0:ℤ) = 0 ^ 2 := by numbers
+      _ ≡ n ^ 2 [ZMOD 3] := by rel [hn]
+      _ ≡ 2 [ZMOD 3] := by rel [h]
+    numbers at h -- contradiction!
+  · sorry
+  · sorry
+  done
+
 example (n : ℤ) : Int.Odd n ↔ ¬ Int.Even n := by
   sorry
   done

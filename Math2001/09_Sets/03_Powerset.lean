@@ -22,7 +22,7 @@ example : {n : ℕ | Nat.Even n} ∉ {s : Set ℕ | 3 ∈ s} := by
   rw [← Nat.odd_iff_not_even]
   use 1
   numbers
-
+  done
 
 def p (s : Set ℕ) : Set ℕ := {n : ℕ | n + 1 ∈ s}
 
@@ -45,7 +45,7 @@ example : ¬ Injective p := by
     use 0
     dsimp
     exhaust
-
+  done
 
 def q (s : Set ℤ) : Set ℤ := {n : ℤ | n + 1 ∈ s}
 
@@ -57,7 +57,7 @@ example : Injective q := by
   dsimp at hk
   conv at hk => ring
   apply hk
-
+  done
 
 
 example : ¬ ∃ f : X → Set X, Surjective f := by
@@ -72,6 +72,7 @@ example : ¬ ∃ f : X → Set X, Surjective f := by
   · have hfx : ¬ x ∉ f x := hxs
     rw [hx] at hfx
     contradiction
+  done
 
 /-! # Exercises -/
 
@@ -95,3 +96,4 @@ example (n : ℕ) : U n = {x : ℤ | (2:ℤ) ^ n ∣ x} := by
     ext x
     dsimp
     sorry
+  done

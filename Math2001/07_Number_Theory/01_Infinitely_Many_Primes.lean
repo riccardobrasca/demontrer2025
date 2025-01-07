@@ -46,3 +46,4 @@ example (N : ℕ) : ∃ p ≥ N, Prime p := by
         contradiction
       · addarith [h_gt]
     · apply hp
+  done

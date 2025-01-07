@@ -19,6 +19,7 @@ theorem not_superpowered_zero : ¬ Superpowered 0 := by
   conv at one_prime => numbers -- simplifies that statement to `Prime 1`
   have : ¬ Prime 1 := not_prime_one
   contradiction
+  done
 
 
 #eval 1 ^ 1 ^ 0 + 1 -- 2
@@ -30,6 +31,7 @@ theorem superpowered_one : Superpowered 1 := by
   intro n
   conv => ring -- simplifies goal from `Prime (1 ^ 1 ^ n + 1)` to `Prime 2`
   apply prime_two
+  done
 
 
 #eval 2 ^ 2 ^ 0 + 1 -- 3
@@ -55,6 +57,7 @@ theorem not_superpowered_three : ¬ Superpowered 3 := by
     · numbers -- show `2 ≠ 4`
     · numbers -- show `4 = 2 * 2`
   contradiction
+  done
 
 
 example : ∃ k : ℕ, Superpowered k ∧ ¬ Superpowered (k + 1) := by
@@ -67,12 +70,14 @@ example : ∃ k : ℕ, Superpowered k ∧ ¬ Superpowered (k + 1) := by
     constructor
     · apply superpowered_one
     · apply h2
+  done
 
 
 example {P : Prop} (hP : ¬¬P) : P := by
   by_cases hP : P
   · apply hP
   · contradiction
+  done
 
 /-! # Exercises -/
 
@@ -81,9 +86,12 @@ def Tribalanced (x : ℝ) : Prop := ∀ n : ℕ, (1 + x / n) ^ n < 3
 
 example : ∃ x : ℝ, Tribalanced x ∧ ¬ Tribalanced (x + 1) := by
   sorry
+  done
 
 example (P Q : Prop) : (¬P → ¬Q) ↔ (Q → P) := by
   sorry
+  done
 
 example : ∃ k : ℕ, Superpowered k ∧ ¬ Superpowered (k + 1) := by
   sorry
+  done

@@ -27,7 +27,7 @@ theorem F_bound (n : ℕ) : F n ≤ 2 ^ n := by
         _ ≤ 2 ^ (k + 1) + 2 ^ k := by rel [IH1, IH2]
         _ ≤ 2 ^ (k + 1) + 2 ^ k + 2 ^ k := by extra
         _ = 2 ^ (k + 2) := by ring
-
+  done
 
 namespace Nat
 
@@ -50,9 +50,11 @@ theorem exists_prime_factor {n : ℕ} (hn2 : 2 ≤ n) : ∃ p : ℕ, Prime p ∧
       calc n = m * x := hx
         _ = (p * y) * x := by rw [hy]
         _ = p * (x * y) := by ring
+  done
 
 /-! # Exercises -/
 
 
 theorem extract_pow_two (n : ℕ) (hn : 0 < n) : ∃ a x, Odd x ∧ n = 2 ^ a * x := by
   sorry
+  done
