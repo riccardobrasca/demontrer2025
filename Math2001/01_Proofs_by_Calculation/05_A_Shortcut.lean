@@ -20,15 +20,6 @@ example {x y : ℚ} (hx : x = 2) (hy : y ^ 2 = -7) : x + y ^ 2 = -5 := by
     _ = -5 := by addarith [hx]
   done
 
-example {s t : ℝ} (h : t = 4 - s * t) : t + s * t > 0 := by
-  addarith [h]
-  done
-
-example {m n : ℝ} (h1 : m ≤ 8 - n) : 10 > m + n := by
-  addarith [h1]
-  done
-
-
 -- Check that `addarith` can't verify this deduction!
 example {w : ℚ} (h1 : 3 * w + 1 = 4) : w = 1 := by
   sorry
