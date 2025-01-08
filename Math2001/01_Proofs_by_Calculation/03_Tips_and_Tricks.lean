@@ -11,43 +11,79 @@ proofs. -/
 
 
 -- Example 1.3.1
-example {a b : ℤ} (h1 : a = 2 * b + 5) (h2 : b = 3) : a = 11 := by
-  sorry
+example {a b : ℤ} (h1 : a = 2 * b + 5) (h2 : b = 3) :
+a = 11 := by
+  calc
+    a = 2 * b + 5 := by rw [h1]
+    _ = 2 * 3 + 5 := by rw [h2]
+    _ = 11 := by ring
   done
 
 -- Example 1.3.2
-example {x : ℤ} (h1 : x + 4 = 2) : x = -2 := by
-  sorry
+example {x : ℤ} (h1 : x + 4 = 2) :
+x = -2 := by
+  calc
+    x = (x + 4) - 4 := by ring
+    _ = 2 - 4 := by rw [h1]
+    _ = -2 := by ring
   done
 
 -- Example 1.3.3
-example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 := by
-  sorry
+example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) :
+a = 9 := by
+  calc
+    a = (a - 5 * b) + 5 * b := by ring
+    _ = 4 + 5 * b := by rw [h1]
+    _ = 4 + 5 * ((b + 2) - 2) := by ring
+    _ = 4 + 5 * (b + 2) - 5 * 2 := by ring
+    _ = 4 + 5 * 3 - 5 * 2 := by rw [h2]
+    _ = 9 := by ring
   done
 
 -- Example 1.3.4
-example {w : ℚ} (h1 : 3 * w + 1 = 4) : w = 1 := by
-  sorry
+example {w : ℚ} (h1 : 3 * w + 1 = 4) :
+w = 1 := by
+  calc
+    w = ((3 * w + 1) - 1) / 3 := by ring
+    _ = (4 - 1) / 3 := by rw [h1]
+    _ = 1 := by ring
   done
 
 -- Example 1.3.5
-example {x : ℤ} (h1 : 2 * x + 3 = x) : x = -3 := by
-  sorry
+example {x : ℤ} (h1 : 2 * x + 3 = x) :
+x = -3 := by
+  calc
+    x = ((2*x +3) - x) - 3 := by ring
+    _ = (x - x) - 3 := by rw [h1]
+    _ = 0 - 3 := by ring
+    _ = - 3 := by ring
   done
 
 -- Example 1.3.6
-example {x y : ℤ} (h1 : 2 * x - y = 4) (h2 : y - x + 1 = 2) : x = 5 := by
-  sorry
+example {x y : ℤ} (h1 : 2 * x - y = 4) (h2 : y - x + 1 = 2) :
+x = 5 := by
+  calc
+    x = (2 * x - y) + (y - x + 1) - 1 := by ring
+    _ = 4 + 2 - 1 := by rw [h1, h2]
+    _ = 5 := by ring
   done
 
 -- Example 1.3.7
-example {u v : ℚ} (h1 : u + 2 * v = 4) (h2 : u - 2 * v = 6) : u = 5 := by
-  sorry
+example {u v : ℚ} (h1 : u + 2 * v = 4) (h2 : u - 2 * v = 6) :
+u = 5 := by
+  calc
+    u = ((u + 2 * v) + (u - 2 * v))/2 := by ring
+    _ = (4 + 6)/2 := by rw [h1, h2]
+    _ = 5 := by ring
   done
 
 -- Example 1.3.8
-example {x y : ℝ} (h1 : x + y = 4) (h2 : 5 * x - 3 * y = 4) : x = 2 := by
-  sorry
+example {x y : ℝ} (h1 : x + y = 4) (h2 : 5 * x - 3 * y = 4) :
+x = 2 := by
+  calc
+    x = ((5 * x - 3 * y) + 3 * (x + y))/8 := by ring
+    _ = (4 + 3 * 4)/8 := by rw [h1, h2]
+    _ = 2 := by ring
   done
 
 /-! # Exercises
