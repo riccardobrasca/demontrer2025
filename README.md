@@ -45,6 +45,8 @@ Pour utiliser Lean sur un ordinateur il faut installer le logiciel. L'installati
 wget -q --no-check-certificate https://webusers.imj-prg.fr/~riccardo.brasca/files/install.sh && bash install.sh && source ~/.profile && cd demontrer2025 && lake exe cache get! && lake build Library
 ```
 
+*L'étape ci-dessus est à faire seulement une fois*
+
 * tapez `code .` pour ouvrir VS Code, ou sinon lancez VS Code et ouvrez *le dossier* (pas un fichier !) `demontrer2025`.
 
 ### Installation sur un ordinateur personnel
