@@ -34,3 +34,9 @@ La création du codespace est à faire *seulement une fois*. Si vous voulez util
 [https://github.com/codespaces/](https://github.com/codespaces/)
 
 *Remarquez que si vous créez une machine à chaque fois vous allez atteindre rapidement la limite de codespace (et en plus vous n'aurez pas accès à ce que vous avez fait avant), donc assurez-vous de créer la machine UNE SEULE FOIS*.
+
+### Installation sur un ordinateur
+
+Pour utiliser Lean sur un ordinateur (personnel ou celui de la salle) il y a plusieurs étapes à faire. Suivez *attentivement* les instructions suivantes et n'hésitez pas à demander de l'aide. Notez que Lean est assez gourmand en ressource, donc c'est possible qu'il soit très lent sur votre ordinateur.
+
+* La première étape est d'installer [VS Code](https://code.visualstudio.com/). Sur les ordinateurs de la salle, cette étape n'est pas nécessaire.
