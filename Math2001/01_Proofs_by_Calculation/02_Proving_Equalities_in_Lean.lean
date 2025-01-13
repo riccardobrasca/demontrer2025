@@ -2,6 +2,12 @@
 import Mathlib.Data.Real.Basic
 import Library.Basic
 
+section test
+
+#eval 1 + 1
+
+end test
+
 math2001_init
 
 /-! # Section 1.2: Proving equalities in Lean
