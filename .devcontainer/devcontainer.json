@@ -5,7 +5,7 @@
     "dockerfile": "Dockerfile"
   },
 
-  "onCreateCommand": "echo \"Downloading everything\" && lake exe cache get && lake build Library && echo \"Finished setup! Open a file using the Explorer in the top-left of your screen.\"",
+  "onCreateCommand": "lake exe cache get! && lake build Library",
 
   "customizations": {
     "vscode" : {
