@@ -53,6 +53,10 @@ wget -q --no-check-certificate https://webusers.imj-prg.fr/~riccardo.brasca/file
 
 ### Installation sur un ordinateur personnel
 
-Pour utiliser Lean sur un ordinateur (personnel ou celui de la salle) il y a plusieurs étapes à faire. Suivez *attentivement* les instructions suivantes et n'hésitez pas à demander de l'aide. Notez que Lean est assez gourmand en ressource, donc c'est possible qu'il soit très lent sur votre ordinateur.
+Pour utiliser Lean sur votre ordinateur il y a plusieurs étapes à faire. Suivez *attentivement* les instructions suivantes et n'hésitez pas à demander de l'aide. Notez que Lean est assez gourmand en ressource, donc c'est possible qu'il soit un peu lent sur votre ordinateur. Les étapes suivantes sont pour Ubuntu, mais il est possible d'utiliser Lean sur Windows ou Mac.
 
 * La première étape est d'installer [VS Code](https://code.visualstudio.com/).
+* On a besoin de `git` et `curl`, donc `sudo apt install git curl` (c'est très possible que vous les avez déjà).
+* Vous pouvez maintenant suivre les étapes ci-dessus pour l'installation sur un ordinateur de la salle.
+
+Vous pouvez aussi regarder le [guide officiel](https://docs.lean-lang.org/lean4/doc/quickstart.html) de Lean et [celui](https://leanprover-community.github.io/get_started.html) de Mathlib, la bibliothéque mathématique officielle de Lean.
