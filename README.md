@@ -4,9 +4,9 @@ This repository contains the Lean code for the book [The Mechanics of Proof](htt
 
 The Lean files corresponding to each chapter of the book are in the folder [`Math2001`](https://github.com/hrmacbeth/math2001/tree/main/Math2001).
 
-You can run the code on the web using Gitpod, by clicking this link:
+You can run the code on the web using Codespace, by clicking this link:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/riccardobrasca/demontrer2025)
+<a href='https://codespaces.new/riccardobrasca/demontrer2025' target="_blank" rel="noreferrer noopener"><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
 
 (You will be prompted to make an account, if you do not yet have one -- the free tier offers 50 hours of use per month.) This is the easiest way to get started if you have never used Lean before.  You can accept the default "New Workspace" options and hit the "continue" button, then it will take about five minutes to load up a new workspace and auto-install the Lean mathematical library (wait for all the "cloning", "building", "compiling", "downloading" and "decompressing" steps to finish).  The workspace you just created will be accessible later from your [Gitpod user page](https://gitpod.io/workspaces).
 
