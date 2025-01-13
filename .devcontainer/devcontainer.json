@@ -1,11 +1,15 @@
 {
-  "name": "demonter2025 dev container",
+  "name": "demontrer2025 dev container",
 
   "build": {
     "dockerfile": "Dockerfile"
   },
 
-  "onCreateCommand": "lake exe cache get! && lake build Library",
+  "onCreateCommand": "lake exe cache get!",
+
+  "hostRequirements": {
+     "cpus": 4
+  },
 
   "customizations": {
     "vscode" : {
