@@ -37,11 +37,15 @@ La création du codespace est à faire *seulement une fois*. Si vous voulez util
 
 ### Installation sur un ordinateur de la salle
 
-Pour utiliser Lean sur un ordinateur (personnel ou celui de la salle) il y a plusieurs étapes à faire. Suivez *attentivement* les instructions suivantes et n'hésitez pas à demander de l'aide.
+Pour utiliser Lean sur un ordinateur il faut installer le logiciel. L'installation utilise beaucoup le réseau, pour cette raison vous ne pouvez pas le faire tous ensemble. Il faut donc l'installer par petits groupes de deux ou trois. La procédure est heureusement assez simple:
+
+* une fois connecté avec votre compte (PAS guest), ouvrez un terminal et copiez-collez la commande suivante (ça peut prendre une dizaine de minutes)
 
 ```
-wget -q --no-check-certificate https://webusers.imj-prg.fr/~riccardo.brasca/files/install.sh && bash install.sh && source ~/.profile && cd demontrer2025 && lake exe cache get!
+wget -q --no-check-certificate https://webusers.imj-prg.fr/~riccardo.brasca/files/install.sh && bash install.sh && source ~/.profile && cd demontrer2025 && lake exe cache get! && lake build Library
 ```
+
+* tapez `code .` pour ouvrir VS Code, ou sinon lancez VS Code et ouvrez *le dossier* (pas un fichier !) `demontrer2025`.
 
 ### Installation sur un ordinateur personnel
 
