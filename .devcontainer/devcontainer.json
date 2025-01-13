@@ -1,5 +1,5 @@
 {
-  "name": "LFTCM2024 dev container",
+  "name": "demonter2025 dev container",
 
   "build": {
     "dockerfile": "Dockerfile"
