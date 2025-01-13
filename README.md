@@ -47,7 +47,7 @@ wget -q --no-check-certificate https://webusers.imj-prg.fr/~riccardo.brasca/file
 
 *L'étape ci-dessus est à faire seulement une fois !*
 
-* lancez VS Code et ouvrez *le dossier*, pas un fichier ! (C'est "Open Fodelr" ou `Ctlr+K Ctrl+O` ) `demontrer2025`. ![1](img/1.png) ![2](img/2.png)
+* lancez VS Code et ouvrez *le dossier*, pas un fichier ! (C'est "Open Fodelr" ou `Ctlr+K Ctrl+O` et après selectioner le dossier `demontrer2025`). ![1](img/1.png) ![2](img/2.png)
 * VS Code vous demande si vous faites confiance au logiciel, dites "Yes, I trust the authors".
 * Dans le menu à gauche, sélectionnez `Math2001/01_Proofs_by_Calculation02_Proving_Equalities_in_Lean.lean/`. En allant avec le curseur à la fine de ligne `#eval 1 + 1` vous devez voire `2` dans la partie à droite de l'écran. Si c'est le cas Lean fonctionne, sinon demandez de l'aide. ![3](img/3.png)
 
