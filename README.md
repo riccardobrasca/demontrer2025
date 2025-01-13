@@ -23,7 +23,7 @@ Il existe deux manières d'utiliser Lean, en ligne ou en en local. La version en
 
 ### Utilisation en ligne
 
-Pour la version en ligne, il faut créer un *github codespace* en cliquant le bouton suivant
+Pour la version en ligne *on vous conseille d'utiliser Google Chriome*. Il faut créer un *github codespace* en cliquant le bouton suivant
 
 <a href='https://codespaces.new/riccardobrasca/demontrer2025' target="_blank" rel="noreferrer noopener"><img src='https://github.com/codespaces/badge.svg' alt='Créer le GitHub Codespaces (utiliser seulement une fois !)' style='max-width: 100%;'></a>
 
