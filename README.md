@@ -29,8 +29,8 @@ Pour la version en ligne, il faut créer un *github codespace* en cliquant le bo
 
 Il faut un compte github et la procédure prend quelques minutes, mais il n'y a rien d'autre à faire.
 
-La création du codespace est à faire *seulement une fois*. Si vous voulez utiliser le codespace que vous avez déjà créé (par exemple sur un autre ordinateur) il suffit de cliquer sur le bouton suivant (en étant connecté à son compte github) et sélectionner la machine existante.
+La création du codespace est à faire *seulement une fois*. Si vous voulez utiliser le codespace que vous avez déjà créé (par exemple sur un autre ordinateur) il suffit d'aller à l'adresse suivante (en étant connecté à son compte github) et sélectionner la machine existante.
 
-<a href='https://github.com/codespaces/' target="_blank" rel="noreferrer noopener"><img src='https://github.com/codespaces/badge.svg' alt='Utiliser le Codespaced déjà existent' style='max-width: 100%;'></a>
+[https://github.com/codespaces/](https://github.com/codespaces/)
 
 *Remarquez que si vous créez une machine à chaque fois vous allez atteindre rapidement la limite de codespace (et en plus vous n'aurez pas accès à ce que vous avez fait avant), donc assurez-vous de créer la machine UNE SEULE FOIS*.
