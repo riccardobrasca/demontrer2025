@@ -10,12 +10,7 @@ end test
 
 math2001_init
 
-/-! # Section 1.2: Proving equalities in Lean
-
-This file should be worked through in parallel with the corresponding section of the book:
-https://hrmacbeth.github.io/math2001/01_Proofs_by_Calculation.html#proving-equalities-in-lean
-
-I recommend splitting your screen to display the code and the book side by side! -/
+/-! # Section 1.2: Proving equalities in Lean -/
 
 
 -- Example 1.2.1
@@ -28,7 +23,7 @@ example {a b : ℚ} (h1 : a - b = 4) (h2 : a * b = 1) :
   done
 
 -- Example 1.2.2.
--- Exercise: replace the words "sorry" with the correct Lean justification.
+-- Exercice : remplacez les mots `sorry` par une tactique en Lean.
 example {r s : ℝ} (h1 : s = 3) (h2 : r + 2 * s = -1) :
 r = -7 := by
   calc
@@ -39,7 +34,7 @@ r = -7 := by
   done
 
 -- Example 1.2.4.
--- Exercise: type out the whole proof printed in the text as a Lean proof.
+-- Exercice : écrire l'ensemble de la preuve dans le texte comme une preuve en Lean.
 example {a b c d e f : ℤ} (h1 : a * d = b * c) (h2 : c * f = d * e) :
     d * (a * f - b * e) = 0 := by
   sorry
