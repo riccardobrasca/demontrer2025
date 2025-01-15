@@ -42,15 +42,5 @@ r = -7 := by
 -- Exercise: type out the whole proof printed in the text as a Lean proof.
 example {a b c d e f : ℤ} (h1 : a * d = b * c) (h2 : c * f = d * e) :
     d * (a * f - b * e) = 0 := by
-    calc
-      d * (a * f - b * e) = d * (a * f) - d * (b * e) := by ring
-      _ = (d * a) * f - d * (b * e) := by ring
-      _ = (a * d) * f - d * (b * e) := by ring
-      _ = (b * c) * f - d * (b * e) := by rw [h1]
-      _ = b * (c * f) - d * (b * e) := by ring
-      _ = b * (d * e) - d * (b * e) := by rw [h2]
-      _ = (b * d) * e - d * (b * e) := by ring
-      _ = (d * b) * e - d * (b * e) := by ring
-      _ = d * (b * e) - d * (b * e) := by ring
-      _ = 0 := by ring
-    done
+  sorry
+  done
