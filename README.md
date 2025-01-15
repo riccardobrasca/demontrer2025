@@ -60,3 +60,9 @@ Pour utiliser Lean sur votre ordinateur il y a plusieurs étapes à faire. Suive
 * Vous pouvez maintenant suivre les étapes ci-dessus pour l'installation sur un ordinateur de la salle.
 
 Vous pouvez aussi regarder le [guide officiel](https://docs.lean-lang.org/lean4/doc/quickstart.html) de Lean et [celui](https://leanprover-community.github.io/get_started.html) de Mathlib, la bibliothéque mathématique officielle de Lean.
+
+# Presentation du cours 
+
+Nous suivons le cours de Heather Macbeth : 
+
+https://hrmacbeth.github.io/math2001/01_Proofs_by_Calculation.html#proving-equalities-in-lean
