@@ -24,7 +24,9 @@ Il existe deux manières d'utiliser Lean, en ligne ou en en local. La version en
 ### Utilisation en ligne
 
 Pour la version en ligne *on vous conseille d'utiliser Google Chrome*. Il faut créer un *github codespace* en cliquant le bouton suivant
-<a href="http://example.com/" target="_blank">example</a>
+
+<p>Check out <a href="https://www.freecodecamp.org/">freeCodeCamp</a>.</p>
+
 <a href='https://codespaces.new/riccardobrasca/demontrer2025' target="_blank"><img src='https://github.com/codespaces/badge.svg' alt='Créer le GitHub Codespaces (utiliser seulement une fois !)' style='max-width: 100%;'></a>
 
 Il faut un compte github et la procédure prend quelques minutes, mais il n'y a rien d'autre à faire.
