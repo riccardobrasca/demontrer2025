@@ -63,6 +63,4 @@ Vous pouvez aussi regarder le [guide officiel](https://docs.lean-lang.org/lean4/
 
 ## Presentation du cours 
 
-Nous suivons le cours de Heather Macbeth : 
-
-https://hrmacbeth.github.io/math2001/01_Proofs_by_Calculation.html#proving-equalities-in-lean
+Nous suivons le [cours de Heather Macbeth](https://hrmacbeth.github.io/math2001/index.html).
