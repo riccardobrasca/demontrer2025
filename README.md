@@ -63,4 +63,4 @@ Vous pouvez aussi regarder le [guide officiel](https://docs.lean-lang.org/lean4/
 
 ## Presentation du cours 
 
-Nous suivons le [cours de Heather Macbeth](https://hrmacbeth.github.io/math2001/index.html).
+Nous suivons le [cours de Heather Macbeth](https://hrmacbeth.github.io/math2001/index.html). Vous trouverez dans son livre (en anglais) beaucoup plus de matériel que dans le cours, n'hésitez pas à y aller si vous êtes curieux. La [liste de tactiques](https://hrmacbeth.github.io/math2001/Index_of_Tactics.html) sera sans doute utile pour tout le monde.
