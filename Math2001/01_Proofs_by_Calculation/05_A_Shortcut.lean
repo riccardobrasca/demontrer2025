@@ -20,7 +20,7 @@ example {x y : ℚ} (hx : x = 2) (hy : y ^ 2 = -7) : x + y ^ 2 = -5 := by
     _ = -5 := by addarith [hx]
   done
 
--- Check that `addarith` can't verify this deduction!
+-- Vérifiez que `addarith` ne peut pas vérifier cette déduction
 example {w : ℚ} (h1 : 3 * w + 1 = 4) : w = 1 := by
   sorry
   done
