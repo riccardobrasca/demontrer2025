@@ -211,7 +211,7 @@ example {t : ℚ} (ht : t ^ 2 - 4 = 0) :
     _ = 10 * t + 2 := by ring
   done
 
--- L'idée ici est de chercher une rélation du type `(a*y+b)*(x+3)+c*(2*x-x*y) = y + ...
+-- L'idée ici est de chercher une rélation du type `(a*y+b)*(x+3)+c*(2*x-x*y) = y + ...`
 example {x y : ℝ} (h1 : x + 3 = 5) (h2 : 2 * x - y * x = 0) : y = 2 := by
   calc
     y = (-1/2*y+1)*(x+3)-1/2*(2*x-y*x)-(-5/2*y+3) := by ring
