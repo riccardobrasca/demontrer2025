@@ -17,7 +17,7 @@ example {x y : ℤ} (hx : x + 3 ≤ 2) (hy : y + 2 * x ≥ 3) : y > 3 :=
     _ > 3 := by numbers
 
 -- Example 1.4.2
--- Exercise: replace the words "sorry" with the correct Lean justification.
+-- Exercice : remplacez les mots `sorry` par une tactique en Lean.
 example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : r ≤ 3 :=
   calc
     r = (s + r + r - s) / 2 := by sorry
@@ -30,7 +30,7 @@ example {x y : ℝ} (h1 : y ≤ x + 5) (h2 : x ≤ -2) : x + y < 2 :=
   sorry
 
 -- Example 1.4.4
--- Exercise: replace the words "sorry" with the correct Lean justification.
+-- Exercice : remplacez les mots `sorry` par une tactique en Lean.
 example {u v x y A B : ℝ} (h1 : 0 < A) (h2 : A ≤ 1) (h3 : 1 ≤ B) (h4 : x ≤ B)
     (h5 : y ≤ B) (h6 : 0 ≤ u) (h7 : 0 ≤ v) (h8 : u < A) (h9 : v < A) :
     u * y + v * x + u * v < 3 * A * B :=
@@ -44,7 +44,7 @@ example {u v x y A B : ℝ} (h1 : 0 < A) (h2 : A ≤ 1) (h3 : 1 ≤ B) (h4 : x �
     _ = 3 * A * B := by sorry
 
 -- Example 1.4.5
--- Exercise: replace the words "sorry" with the correct Lean justification.
+-- Exercice : remplacez les mots `sorry` par une tactique en Lean.
 example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 :=
   calc
     t ^ 2 - 3 * t - 17
@@ -55,7 +55,6 @@ example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 :=
     _ ≥ 5 := by sorry
 
 -- Example 1.4.6
--- Exercise: type out the whole proof printed in the text as a Lean proof.
 example {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 :=
   sorry
 
@@ -67,7 +66,7 @@ example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 :=
 
 
 -- Example 1.4.8
--- Exercise: replace the words "sorry" with the correct Lean justification.
+-- Exercice : remplacez les mots `sorry` par une tactique en Lean.
 example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
   calc
     (x + y) ^ 2 ≤ (x + y) ^ 2 + (x - y) ^ 2 := by sorry
@@ -76,7 +75,7 @@ example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
     _ < 3 := by sorry
 
 -- Example 1.4.9
--- Exercise: replace the words "sorry" with the correct Lean justification.
+-- Exercice : remplacez les mots `sorry` par une tactique en Lean.
 example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) :
     3 * a * b + a ≤ 7 * b + 72 :=
   calc
@@ -101,8 +100,8 @@ example {a b c : ℝ} :
 
 /-! # Exercises
 
-Solve these problems yourself.  You may find it helpful to solve them on paper before typing them
-up in Lean. -/
+Résolvez ces problèmes vous-même.  Il peut être utile de les résoudre sur papier avant de
+les saisir dans Lean. -/
 
 
 example {x y : ℤ} (h1 : x + 3 ≥ 2 * y) (h2 : 1 ≤ y) : x ≥ -1 :=
