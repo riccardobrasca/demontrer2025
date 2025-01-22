@@ -15,12 +15,21 @@ example {a b : ℤ} (ha : a - 2 * b = 1) : a = 2 * b + 1 := by
   done
 
 example {x y : ℚ} (hx : x = 2) (hy : y ^ 2 = -7) : x + y ^ 2 = -5 := by
-  calc
-    x + y ^ 2 = x - 7 := by addarith [hy]
-    _ = -5 := by addarith [hx]
+  addarith [hx, hy]
   done
 
--- Check that `addarith` can't verify this deduction!
+example {s t : ℝ} (h : t = 4 - s * t) : t + s * t > 0 := by
+  addarith [h]
+  done
+
+example {m n : ℝ} (h1 : m ≤ 8 - n) : 10 > m + n := by
+  addarith [h1]
+  done
+
+-- Vérifiez que `addarith` ne peut pas vérifier cette déduction
 example {w : ℚ} (h1 : 3 * w + 1 = 4) : w = 1 := by
-  sorry
+  calc
+    w = ((3 * w + 1) - 1) / 3 := by ring
+    _ = (4 - 1) / 3 := by rw [h1]
+    _ = 1 := by ring
   done
