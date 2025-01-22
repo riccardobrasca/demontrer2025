@@ -50,13 +50,7 @@ example {u v x y A B : ℝ} (h1 : 0 < A) (h2 : A ≤ 1) (h3 : 1 ≤ B) (h4 : x �
 -- Example 1.4.5
 -- Exercice : remplacez les mots `sorry` par une tactique en Lean.
 example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 := by
-  calc
-    t ^ 2 - 3 * t - 17
-      = t * t - 3 * t - 17 := by sorry
-    _ ≥ 10 * t - 3 * t - 17 := by sorry
-    _ = 7 * t - 17 := by sorry
-    _ ≥ 7 * 10 - 17 := by sorry
-    _ ≥ 5 := by sorry
+  sorry
   done
 
 -- Example 1.4.6
