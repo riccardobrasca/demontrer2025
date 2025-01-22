@@ -27,7 +27,7 @@ example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : r ≤ 3 := by
   done
 
 -- Example 1.4.3
--- Exercise: type out the whole proof printed in the text as a Lean proof.
+-- Exercice : écrire l'ensemble de la preuve dans comme une preuve en Lean.
 example {x y : ℝ} (h1 : y ≤ x + 5) (h2 : x ≤ -2) : x + y < 2 := by
   sorry
   done
