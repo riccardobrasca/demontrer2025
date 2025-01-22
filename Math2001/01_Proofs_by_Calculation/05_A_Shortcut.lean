@@ -19,7 +19,7 @@ example {x y : ℚ} (hx : x = 2) (hy : y ^ 2 = -7) : x + y ^ 2 = -5 := by
   done
 
 example {s t : ℝ} (h : t = 4 - s * t) : t + s * t > 0 := by
-  addarith [h]
+  sorry
   done
 
 example {m n : ℝ} (h1 : m ≤ 8 - n) : 10 > m + n := by
