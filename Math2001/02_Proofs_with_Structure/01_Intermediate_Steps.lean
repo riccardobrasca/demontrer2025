@@ -14,7 +14,7 @@ example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 := by
 
 
 example {m n : ℤ} (h1 : m + 3 ≤ 2 * n - 1) (h2 : n ≤ 5) : m ≤ 6 := by
-  have h3 :=
+  have h3 : m + 3 ≤ 9 :=
   calc
     m + 3 ≤ 2 * n - 1 := by rel [h1]
     _ ≤ 2 * 5 - 1 := by rel [h2]
