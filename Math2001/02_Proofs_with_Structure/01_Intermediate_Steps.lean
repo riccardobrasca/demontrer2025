@@ -15,11 +15,12 @@ example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 := by
 
 
 example {m n : ℤ} (h1 : m + 3 ≤ 2 * n - 1) (h2 : n ≤ 5) : m ≤ 6 := by
-  have h3 :=
-  calc
-    m + 3 ≤ 2 * n - 1 := by rel [h1]
-    _ ≤ 2 * 5 - 1 := by rel [h2]
-    _ = 9 := by numbers
+  have h3 : m + 3 ≤ 9 := by
+    calc
+      m + 3 ≤ 2 * n - 1 := by rel [h1]
+      _ ≤ 2 * 5 - 1 := by rel [h2]
+      _ = 9 := by numbers
+    done
   addarith [h3]
   done
 
@@ -34,19 +35,22 @@ example {r s : ℚ} (h1 : s + 3 ≥ r) (h2 : s + r ≤ 3) : r ≤ 3 := by
   done
 
 example {t : ℝ} (h1 : t ^ 2 = 3 * t) (h2 : t ≥ 1) : t ≥ 2 := by
-  have h3 :=
-  calc t * t = t ^ 2 := by ring
-    _ = 3 * t := by rw [h1]
+  have h3 : t * t = 3 * t := by
+    calc t * t = t ^ 2 := by ring
+      _ = 3 * t := by rw [h1]
+    done
   cancel t at h3
   addarith [h3]
   done
 
+
 example {a b : ℝ} (h1 : a ^ 2 = b ^ 2 + 1) (h2 : a ≥ 0) : a ≥ 1 := by
-  have h3 :=
-  calc
-    a ^ 2 = b ^ 2 + 1 := by rw [h1]
-    _ ≥ 1 := by extra
-    _ = 1 ^ 2 := by ring
+  have h3 : a ^ 2 ≥ 1 ^ 2 := by
+    calc
+      a ^ 2 = b ^ 2 + 1 := by rw [h1]
+      _ ≥ 1 := by extra
+      _ = 1 ^ 2 := by ring
+    done
   cancel 2 at h3
   done
 
