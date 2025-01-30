@@ -23,9 +23,9 @@ Il existe deux manières d'utiliser Lean, en ligne ou en en local. La version en
 
 ### Utilisation en ligne
 
-Pour la version en ligne *on vous conseille d'utiliser Google Chriome*. Il faut créer un *github codespace* en cliquant le bouton suivant
+Pour la version en ligne *on vous conseille d'utiliser Google Chrome*. Il faut créer un *github codespace* en cliquant le bouton suivant (utiliser `ctrl+click` pour l'ouvrir dans une nouvelle onglet)
 
-<a href='https://codespaces.new/riccardobrasca/demontrer2025' target="_blank" rel="noreferrer noopener"><img src='https://github.com/codespaces/badge.svg' alt='Créer le GitHub Codespaces (utiliser seulement une fois !)' style='max-width: 100%;'></a>
+<a href='https://codespaces.new/riccardobrasca/demontrer2025' target="_blank"><img src='https://github.com/codespaces/badge.svg' alt='Créer le GitHub Codespaces (utiliser seulement une fois !)' style='max-width: 100%;'></a>
 
 Il faut un compte github et la procédure prend quelques minutes, mais il n'y a rien d'autre à faire.
 
@@ -60,3 +60,7 @@ Pour utiliser Lean sur votre ordinateur il y a plusieurs étapes à faire. Suive
 * Vous pouvez maintenant suivre les étapes ci-dessus pour l'installation sur un ordinateur de la salle.
 
 Vous pouvez aussi regarder le [guide officiel](https://docs.lean-lang.org/lean4/doc/quickstart.html) de Lean et [celui](https://leanprover-community.github.io/get_started.html) de Mathlib, la bibliothéque mathématique officielle de Lean.
+
+## Presentation du cours 
+
+Nous suivons le [cours de Heather Macbeth](https://hrmacbeth.github.io/math2001/index.html). Vous trouverez dans son livre (en anglais) beaucoup plus de matériel que dans le cours, n'hésitez pas à y aller si vous êtes curieux. La [liste de tactiques](https://hrmacbeth.github.io/math2001/Index_of_Tactics.html) sera sans doute utile pour tout le monde.
