@@ -13,10 +13,13 @@
 	".gitignore": true,
 	"lake-manifest.json": true,
 	"lakefile.lean": true,
-    "LeanInRome.lean": true,
+	"README.md": true,
+	"Library.lean": true,
 	"lean-toolchain": true,
-	"mathematics_in_lean.pdf": true,
-	"MIL.lean": true,
+	"Library": true,
+	"img": true,
+	".lake": true,
+	".github": true,
     "LICENSE":true,
     ".devcontainer":true,
     "lean-tactics.tex":true,
@@ -37,4 +40,5 @@
     "editor.rulers" : [100],
     "lean4.infoview.showExpectedType": false
 }
+
 
