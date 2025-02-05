@@ -4,6 +4,14 @@ import Library.Basic
 
 math2001_init
 
+
+-- lemma ne_of_lt (a b : ℝ ) (h : a < b) : a ≠ b
+
+-- lemma ne_of_gt {a b : ℝ} (h : a > b) : a ≠ b
+
+-- lemma le_antisymm {a b : ℝ} (h1 : a ≤ b) (h2 : b ≤ a) : a = b
+
+
 example {x : ℚ} (hx : 3 * x = 2) : x ≠ 1 := by
   apply ne_of_lt
   calc
