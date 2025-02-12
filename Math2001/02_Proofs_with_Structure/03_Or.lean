@@ -64,7 +64,7 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
         _ < 2 := by numbers
     · apply ne_of_gt
       calc
-        (2:ℤ) < 2 ^ 2 := by numbers
+        2 < 2 ^ 2 := by numbers
         _ ≤ (-n) ^ 2 := by rel [hn]
         _ = n ^ 2 := by ring
   · have hn := le_or_succ_le n 1
@@ -75,7 +75,7 @@ example {n : ℤ} : n ^ 2 ≠ 2 := by
         _ < 2 := by numbers
     · apply ne_of_gt
       calc
-        (2:ℤ) < 2 ^ 2 := by numbers
+        2 < 2 ^ 2 := by numbers
         _ ≤ n ^ 2 := by rel [hn]
   done
 
