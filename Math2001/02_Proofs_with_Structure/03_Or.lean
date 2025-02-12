@@ -5,6 +5,13 @@ import Library.Basic
 math2001_init
 
 
+-- le_or_succ_le {n a : ℤ} : n ≤ a ∨ a+1 ≤ n
+
+-- eq_zero_or_eq_zero_of_mul_eq_zero {a b : ℝ}  (h : a * b = 0) : a = 0 ∨ b = 0
+
+-- ne_of_lt {a b : ℝ} (h : a < b) : a ≠ b
+
+
 example {x y : ℝ} (h : x = 1 ∨ y = -1) : x * y + x = y + 1 := by
   obtain hx | hy := h
   calc
