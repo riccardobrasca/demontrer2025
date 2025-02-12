@@ -4,6 +4,7 @@ import Library.Basic
 
 math2001_init
 
+-- lemma abs_le_of_sq_le_sq' {a b : ℝ} (h1 : a ^ 2 ≤ b ^ 2) (h2 : 0 ≤ b) : -b ≤ a ∧ a ≤ b
 
 example {x y : ℤ} (h : 2 * x - y = 4 ∧ y - x + 1 = 2) : x = 5 := by
   obtain ⟨h1, h2⟩ := h
