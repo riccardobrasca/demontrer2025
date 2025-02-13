@@ -4,6 +4,7 @@ import Library.Basic
 
 math2001_init
 
+-- lemma abs_le_of_sq_le_sq' {a b : ℝ} (h1 : a ^ 2 ≤ b ^ 2) (h2 : 0 ≤ b) : -b ≤ a ∧ a ≤ b
 
 example {x y : ℤ} (h : 2 * x - y = 4 ∧ y - x + 1 = 2) : x = 5 := by
   obtain ⟨h1, h2⟩ := h
@@ -15,13 +16,16 @@ example {x y : ℤ} (h : 2 * x - y = 4 ∧ y - x + 1 = 2) : x = 5 := by
 
 
 example {p : ℚ} (hp : p ^ 2 ≤ 8) : p ≥ -5 := by
-  have hp' : -3 ≤ p ∧ p ≤ 3
-  · apply abs_le_of_sq_le_sq'
-    calc
-      p ^ 2 ≤ 9 := by addarith [hp]
-      _ = 3 ^ 2 := by numbers
-    numbers
-  sorry
+  have hp' : -3 ≤ p ∧ p ≤ 3 := by
+    apply abs_le_of_sq_le_sq'
+    · calc
+        p ^ 2 ≤ 9 := by addarith [hp]
+        _ = 3 ^ 2 := by numbers
+    · numbers
+  obtain ⟨h1, h2⟩ := hp'
+  calc
+    p ≥ -3 := h1
+    _ ≥ -5 := by numbers
   done
 
 example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 ∧ b = 1 := by
@@ -45,13 +49,21 @@ example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 ∧ b = 1 := b
   done
 
 example {a b : ℝ} (h1 : a ^ 2 + b ^ 2 = 0) : a = 0 ∧ b = 0 := by
-  have h2 : a ^ 2 = 0
-  · apply le_antisymm
-    calc
-      a ^ 2 ≤ a ^ 2 + b ^ 2 := by extra
-      _ = 0 := by rw [h1]
-    extra
-  sorry
+  have h2 : a ^ 2 = 0 := by
+    apply le_antisymm
+    · calc
+        a ^ 2 ≤ a ^ 2 + b ^ 2 := by extra
+        _ = 0 := by rw [h1]
+    · extra
+  have h3 : b ^ 2 = 0 := by
+    apply le_antisymm
+    · calc
+        b ^ 2 ≤ a ^ 2 + b ^ 2 := by extra
+        _ = 0 := by rw [h1]
+    · extra
+  constructor
+  · cancel 2 at h2
+  · cancel 2 at h3
   done
 
 /-! # Exercises -/
