@@ -152,10 +152,32 @@ example {m : ℤ} (h : ∃ a, 2 * a = m) : m ≠ 5 := by
   done
 
 example {n : ℤ} : ∃ a, 2 * a ^ 3 ≥ n * a + 7 := by
-  sorry
+  have h := le_or_succ_le n 0
+  obtain hn | hn := h
+  · use 2
+    calc
+      n*2+7 ≤ 0*2+7 := by rel [hn]
+      _ ≤ 2*2^3 := by numbers
+  · use n+1
+    calc
+      2 * (n + 1) ^ 3 = 2*n^3+5*n^2+5*n-5+(n*(n+1)+7) := by ring
+      _ ≥ 2*1^3+5*1^2+5*1-5+(n*(n+1)+7) := by rel [hn]
+      _ = 7+(n*(n+1)+7) := by ring
+      _ ≥ n*(n+1)+7 := by extra
   done
 
 example {a b c : ℝ} (ha : a ≤ b + c) (hb : b ≤ a + c) (hc : c ≤ a + b) :
     ∃ x y z, x ≥ 0 ∧ y ≥ 0 ∧ z ≥ 0 ∧ a = y + z ∧ b = x + z ∧ c = x + y := by
-  sorry
+  use (-a+b+c)/2, (a-b+c)/2, (a+b-c)/2
+  constructor
+  · addarith [ha]
+  constructor
+  · addarith [hb]
+  constructor
+  addarith [hc]
+  constructor
+  · ring
+  constructor
+  · ring
+  ring
   done
