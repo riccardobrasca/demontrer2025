@@ -38,8 +38,7 @@ example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
   numbers at H -- this is a contradiction!
   done
 
-example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
-    (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) : 3 ≤ a := by
+example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (h : a ^ 2 + b ^ 2 = c ^ 2) : 3 ≤ a := by
   sorry
   done
 
