@@ -4,6 +4,7 @@ import Library.Basic
 
 math2001_init
 
+-- lemma abs_le_of_sq_le_sq' {a b : ℝ} (h1 : a ^ 2 ≤ b ^ 2) (h2 : 0 ≤ b) : -b ≤ a ∧ a ≤ b
 
 example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 := by
   calc
@@ -11,17 +12,17 @@ example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 := by
     _ = -1 := by numbers
   done
 
-example {n : ℕ} (hn : ∀ m, n ∣ m) : n = 1 := by
-  have h1 : n ∣ 1 := by apply hn
-  have h2 : 0 < 1 := by numbers
-  apply le_antisymm
-  · apply Nat.le_of_dvd h2 h1
-  · apply Nat.pos_of_dvd_of_pos h1 h2
-  done
-
 
 example {a b : ℝ} (h : ∀ x, x ≥ a ∨ x ≤ b) : a ≤ b := by
-  sorry
+  obtain h1 | h2 := h ((a+b)/2)
+  · calc
+      a = 2*a-a := by ring
+      _ ≤ 2*((a+b)/2)-a := by rel [h1]
+      _ = b := by ring
+  · calc
+      a = 2*((a+b)/2)-b := by ring
+      _ ≤ 2*b-b := by rel [h2]
+      _ = b := by ring
   done
 
 example {a b : ℝ} (ha1 : a ^ 2 ≤ 2) (hb1 : b ^ 2 ≤ 2) (ha2 : ∀ y, y ^ 2 ≤ 2 → y ≤ a)
@@ -29,7 +30,8 @@ example {a b : ℝ} (ha1 : a ^ 2 ≤ 2) (hb1 : b ^ 2 ≤ 2) (ha2 : ∀ y, y ^ 2 
   apply le_antisymm
   · apply hb2
     apply ha1
-  · sorry
+  · apply ha2
+    apply hb1
   done
 
 example : ∃ b : ℝ, ∀ x : ℝ, b ≤ x ^ 2 - 2 * x := by
@@ -41,11 +43,20 @@ example : ∃ b : ℝ, ∀ x : ℝ, b ≤ x ^ 2 - 2 * x := by
   done
 
 example : ∃ c : ℝ, ∀ x y, x ^ 2 + y ^ 2 ≤ 4 → x + y ≥ c := by
-  sorry
+  use -3
+  intro x y h
+  have hxy : (x+y)^2 ≤ 3^2 := by
+    calc
+      (x+y)^2 ≤ (x+y)^2 + (x-y)^2  := by extra
+      _ = 2*(x^2+y^2) := by ring
+      _ ≤ 2*4 := by rel [h]
+      _ ≤ 3^2 := by numbers
+  have H := abs_le_of_sq_le_sq' hxy (by numbers)
+  obtain ⟨H1, H2⟩ := H
+  addarith [H1]
   done
 
-example : forall_sufficiently_large n : ℤ, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
-  dsimp
+example : ∃ (k : ℤ), ∀ n ≥ k, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
   use 5
   intro n hn
   calc
@@ -55,28 +66,6 @@ example : forall_sufficiently_large n : ℤ, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
     _ ≥ 4 * n ^ 2 + 5 ^ 2 := by rel [hn]
     _ = 4 * n ^ 2 + 7 + 18 := by ring
     _ ≥ 4 * n ^ 2 + 7 := by extra
-  done
-
-
-example : Prime 2 := by
-  constructor
-  · numbers -- show `2 ≤ 2`
-  intro m hmp
-  have hp : 0 < 2 := by numbers
-  have hmp_le : m ≤ 2 := Nat.le_of_dvd hp hmp
-  have h1m : 1 ≤ m := Nat.pos_of_dvd_of_pos hmp hp
-  interval_cases m
-  · left
-    numbers -- show `1 = 1`
-  · right
-    numbers -- show `2 = 2`
-  done
-
-example : ¬ Prime 6 := by
-  apply not_prime 2 3
-  · numbers -- show `2 ≠ 1`
-  · numbers -- show `2 ≠ 6`
-  · numbers -- show `6 = 2 * 3`
   done
 
 /-! # Exercises -/
