@@ -1,8 +1,7 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
-import Library.Theory.ParityModular
 import Library.Basic
-import Library.Tactic.ModEq
+import Mathlib.Tactic.ByContra
 
 math2001_init
 
@@ -10,17 +9,18 @@ open Int
 
 
 example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
-  intro h
+  by_contra' h
   have : 0.5 ^ 2 ≥ 0.5 := h 0.5
   numbers at this
   done
 
 example {x y : ℝ} (h : x + y = 0) : ¬(x > 0 ∧ y > 0) := by
-  intro h
+  by_contra' h
   obtain ⟨hx, hy⟩ := h
-  have H :=
-  calc 0 = x + y := by rw [h]
-    _ > 0 := by extra
+  have H : (0 : ℝ) > 0 :=
+    calc
+      0 = x + y := by rw [h]
+      _ > 0 := by extra
   numbers at H
   done
 
