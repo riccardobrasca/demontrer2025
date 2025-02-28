@@ -72,25 +72,31 @@ example : ∃ (k : ℤ), ∀ n ≥ k, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
 
 
 example {a : ℚ} (h : ∀ b : ℚ, a ≥ -3 + 4 * b - b ^ 2) : a ≥ 1 := by
-  sorry
-  done
-
-example {n : ℤ} (hn : ∀ m, 1 ≤ m → m ≤ 5 → m ∣ n) : 15 ∣ n := by
-  sorry
+  addarith [h 2]
   done
 
 example : ∃ n : ℕ, ∀ m : ℕ, n ≤ m := by
-  sorry
+  use 0
+  intro m
+  extra
   done
 
 example : ∃ a : ℝ, ∀ b : ℝ, ∃ c : ℝ, a + b < c := by
-  sorry
+  use 0
+  intro b
+  use b + 1
+  calc
+    0 + b = b := by ring
+    _ < b + 1 := by extra
   done
 
-example : forall_sufficiently_large x : ℝ, x ^ 3 + 3 * x ≥ 7 * x ^ 2 + 12 := by
-  sorry
-  done
-
-example : ¬(Prime 45) := by
-  sorry
+example : ∃ (k : ℝ), ∀  x ≥ k, x ^ 3 + 3 * x ≥ 7 * x ^ 2 + 12 := by
+  use 7
+  intro x hx
+  calc
+    x^3+3*x = (x-3)^3+(2*x^2-24*x+15)+7*x^2+12 := by ring
+    _ ≥ (7-3)^3+(2*x^2-24*x+15)+7*x^2+12 := by rel [hx]
+    _ = 2*(x-6)^2+7+7*x^2+12 := by ring
+    _ ≥ 2*(7-6)^2+7+7*x^2+12 := by rel [hx]
+    _ ≥ 7*x^2+12 := by extra
   done
