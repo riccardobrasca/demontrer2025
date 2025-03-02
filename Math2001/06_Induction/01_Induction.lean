@@ -30,6 +30,53 @@ example {n : ℕ} (hn : 2 ≤ n) : (3:ℤ) ^ n ≥ 2 ^ n + 5 := by
       _ ≥ 2 ^ (k + 1) + 5 := by extra
   done
 
+example : ∃ (k : ℕ), ∀ n > k, (2:ℤ) ^ n ≥ n ^ 2 + 4 := by
+  use 4
+  intro n hn
+  induction_from_starting_point n, hn with k hk IH
+  · numbers
+  · calc (2:ℤ) ^ (k + 1) = 2 * 2 ^ k := by ring
+      _ ≥ 2 * (k ^ 2 + 4) := by rel [IH]
+      _ = (k + 1) ^ 2 + 4 + ((k-1)^2+2) := by ring
+      _ ≥ (k + 1) ^ 2 + 4 := by extra
+  done
+
+
+/-! # Exercises -/
+
+example : ∃ (k : ℕ), ∀ n > k, 3 ^ n ≥ 2 ^ n + 100 := by
+  use 4
+  intro n hn
+  induction_from_starting_point n, hn with k hk IH
+  · numbers
+  · calc 3 ^ (k + 1) = 2 * 3 ^ k + 3 ^ k := by ring
+      _ ≥ 2 * (2 ^ k + 100) + 3 ^ k := by rel [IH]
+      _ = 2 ^ (k + 1) + 100 + (100 + 3 ^ k) := by ring
+      _ ≥ 2 ^ (k + 1) + 100 := by extra
+  done
+
+example {a : ℝ} (ha : -1 ≤ a) (n : ℕ) : (1 + a) ^ n ≥ 1 + n * a := by
+  simple_induction n with k IH
+  · calc (1 + a) ^ 0 = 1 + 0*a := by ring
+      _ ≥ 1 + 0 * a := by extra
+  · have H : 1+a ≥ 0 := by addarith [ha]
+    calc (1 + a) ^ (k + 1) = (1+a)^k*(1+a) := by ring
+      _ ≥ (1 + k * a) * (1 + a) := by rel [IH]
+      _ = 1 + (k + 1) * a + k * a^2 := by ring
+      _ ≥ 1 + (k + 1) * a := by extra
+  done
+
+-- À partir d'ici on ne peut pas utiliser la subtraction, les variable sont dans `ℕ`!
+
+example (n : ℕ) : 3 ^ n ≥ n ^ 2 + n + 1 := by
+  simple_induction n with k IH
+  · numbers
+  · calc 3 ^ (k + 1) = 3 * 3 ^ k := by ring
+      _ ≥ 3 * (k ^ 2 + k + 1) := by rel [IH]
+      _ = (k+1)^2 + (k + 1) + 1 + 2*k^2 := by ring
+      _ ≥ (k+1)^2+(k+1)+1 := by extra
+  done
+
 example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 2 := by
   use 3
   intro n hn
@@ -45,55 +92,6 @@ example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 2 := by
       _ ≥ (k+1)^2 := by extra
   done
 
-
-/-! # Exercises -/
-
-
-example (n : ℕ) : 3 ^ n ≥ n ^ 2 + n + 1 := by
-  simple_induction n with k IH
-  · numbers
-  · calc 3 ^ (k + 1) = 3 * 3 ^ k := by ring
-      _ ≥ 3 * (k ^ 2 + k + 1) := by rel [IH]
-      _ = (k+1)^2 + (k + 1) + 1 + 2*k^2 := by ring
-      _ ≥ (k+1)^2+(k+1)+1 := by extra
-  done
-
-example {a : ℝ} (ha : -1 ≤ a) (n : ℕ) : (1 + a) ^ n ≥ 1 + n * a := by
-  simple_induction n with k IH
-  · calc (1 + a) ^ 0 = 1 + 0*a := by ring
-      _ ≥ 1 + 0 * a := by extra
-  · have H : 1+a ≥ 0 := by addarith [ha]
-    calc (1 + a) ^ (k + 1) = (1+a)^k*(1+a) := by ring
-      _ ≥ (1 + k * a) * (1 + a) := by rel [IH]
-      _ = 1 + (k + 1) * a + k * a^2 := by ring
-      _ ≥ 1 + (k + 1) * a := by extra
-  done
-
-example : ∃ (k : ℕ), ∀ n > k, 3 ^ n ≥ 2 ^ n + 100 := by
-  use 4
-  intro n hn
-  induction_from_starting_point n, hn with k hk IH
-  · numbers
-  · calc 3 ^ (k + 1) = 2 * 3 ^ k + 3 ^ k := by ring
-      _ ≥ 2 * (2 ^ k + 100) + 3 ^ k := by rel [IH]
-      _ = 2 ^ (k + 1) + 100 + (100 + 3 ^ k) := by ring
-      _ ≥ 2 ^ (k + 1) + 100 := by extra
-  done
-
-example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 2 + 4 := by
-  use 4
-  intro n hn
-  induction_from_starting_point n, hn with k hk IH
-  · numbers
-  · calc 2 ^ (k + 1) = 2 * 2 ^ k := by ring
-      _ ≥ 2 * (k ^ 2 + 4) := by rel [IH]
-      _ = k ^ 2 + 1 + 3 + 4 + k*k := by ring
-      _ ≥ k ^ 2 + 1 + 3 + 4 + 5*k := by rel [hk]
-      _ = (k+1)^2 + 4 + (3 + 3*k) := by ring
-      _ ≥ (k + 1) ^ 2 + 4 := by extra
-  done
-
--- Ici on ne peut pas utiliser la subtraction!
 example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 3 := by
   use 9
   intro n hn
