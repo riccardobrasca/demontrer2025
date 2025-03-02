@@ -68,75 +68,6 @@ example : ¬ Surjective (fun x : ℝ ↦ x ^ 2) := by
     _ ≤ x ^ 2 := by extra
   done
 
-
-inductive Musketeer
-  | athos
-  | porthos
-  | aramis
-  deriving DecidableEq
-
-open Musketeer
-
-
-def f : Musketeer → Musketeer
-  | athos => aramis
-  | porthos => aramis
-  | aramis => athos
-
-
-example : ¬ Injective f := by
-  dsimp [Injective]
-  push_neg
-  use athos, porthos
-  dsimp [f] -- optional
-  exhaust
-  done
-
-example : ¬ Surjective f := by
-  dsimp [Surjective]
-  push_neg
-  use porthos
-  intro a
-  cases a
-  · exhaust
-  · exhaust
-  · exhaust
-  done
-
--- better (more automated) version of the previous proof
-example : ¬ Surjective f := by
-  dsimp [Surjective]
-  push_neg
-  use porthos
-  intro a
-  cases a <;> exhaust
-  done
-
-def g : Musketeer → Musketeer
-  | athos => porthos
-  | porthos => aramis
-  | aramis => athos
-
-
-example : Injective g := by
-  dsimp [Injective]
-  intro x1 x2 hx
-  cases x1 <;> cases x2 <;> exhaust
-  done
-
-example : Surjective g := by
-  dsimp [Surjective]
-  intro y
-  cases y
-  · use aramis
-    exhaust
-  · use athos
-    exhaust
-  · use porthos
-    exhaust
-  done
-
-
 example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
   intro x1 x2 hx
   dsimp at hx
@@ -223,55 +154,6 @@ example : Surjective (fun (n : ℕ) ↦ n ^ 2) := by
   done
 
 example : ¬ Surjective (fun (n : ℕ) ↦ n ^ 2) := by
-  sorry
-  done
-
-inductive White
-  | meg
-  | jack
-  deriving DecidableEq
-
-open White
-
-def h : Musketeer → White
-  | athos => jack
-  | porthos => meg
-  | aramis => jack
-
-example : Injective h := by
-  sorry
-  done
-
-example : ¬ Injective h := by
-  sorry
-  done
-
-example : Surjective h := by
-  sorry
-  done
-
-example : ¬ Surjective h := by
-  sorry
-  done
-
-
-def l : White → Musketeer
-  | meg => aramis
-  | jack => porthos
-
-example : Injective l := by
-  sorry
-  done
-
-example : ¬ Injective l := by
-  sorry
-  done
-
-example : Surjective l := by
-  sorry
-  done
-
-example : ¬ Surjective l := by
   sorry
   done
 
