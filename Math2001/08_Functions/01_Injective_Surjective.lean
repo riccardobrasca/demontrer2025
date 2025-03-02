@@ -3,7 +3,6 @@ import Mathlib.Data.Real.Basic
 import Library.Basic
 
 math2001_init
-set_option pp.funBinderTypes true
 
 --`push_neg` simplifie des négations
 -- `dsimp [f]` remplace les occurrences de `f` par sa définition
