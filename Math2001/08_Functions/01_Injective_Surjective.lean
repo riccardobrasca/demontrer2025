@@ -88,27 +88,29 @@ example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
 /-! # Exercises -/
 
 
+/-- Il y a des paires d'énoncés du type `example : 1 + 1 = 2` et `example : ¬(1 + 1 = 2)`.
+Bien évidemment un est vrai et l'autre est faux. À vous de trouver lequel est faisable. -/
+
+--Dans ce fichier seulement l'énoncé vrai est prouvé, l'autre est éffacé.
+
 example : Injective (fun (x : ℚ) ↦ x - 12) := by
   dsimp [Injective]
   intro a b hab
-  calc a = a -12 + 12 := by ring
+  calc a = a - 12 + 12 := by ring
     _ = b - 12 + 12 := by rw [hab]
     _ = b := by ring
   done
 
-example : Injective (fun (x : ℝ) ↦ 3) := by
-  sorry
-  done
-
 example : ¬ Injective (fun (x : ℝ) ↦ 3) := by
-  sorry
+  dsimp [Injective]
+  push_neg
+  use 0, 1
+  constructor
+  · numbers
+  · numbers
   done
 
 example : Injective (fun (x : ℚ) ↦ 3 * x - 1) := by
-  sorry
-  done
-
-example : ¬ Injective (fun (x : ℚ) ↦ 3 * x - 1) := by
   sorry
   done
 
@@ -116,19 +118,7 @@ example : Injective (fun (x : ℤ) ↦ 3 * x - 1) := by
   sorry
   done
 
-example : ¬ Injective (fun (x : ℤ) ↦ 3 * x - 1) := by
-  sorry
-  done
-
 example : Surjective (fun (x : ℝ) ↦ 2 * x) := by
-  sorry
-  done
-
-example : ¬ Surjective (fun (x : ℝ) ↦ 2 * x) := by
-  sorry
-  done
-
-example : Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
   done
 
@@ -136,15 +126,7 @@ example : ¬ Surjective (fun (x : ℤ) ↦ 2 * x) := by
   sorry
   done
 
-example : Surjective (fun (n : ℕ) ↦ n ^ 2) := by
-  sorry
-  done
-
 example : ¬ Surjective (fun (n : ℕ) ↦ n ^ 2) := by
-  sorry
-  done
-
-example (f : X → Y) : Injective f ↔ ∀ x1 x2 : X, x1 ≠ x2 → f x1 ≠ f x2 := by
   sorry
   done
 
@@ -152,19 +134,7 @@ example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) :
   sorry
   done
 
-example : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
-  sorry
-  done
-
 example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
-  sorry
-  done
-
-example : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
-  sorry
-  done
-
-example : ∀ (f : ℤ → ℤ), Surjective f → Surjective (fun x ↦ 2 * f x) := by
   sorry
   done
 
@@ -172,11 +142,13 @@ example : ¬ ∀ (f : ℤ → ℤ), Surjective f → Surjective (fun x ↦ 2 * f
   sorry
   done
 
-example : ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
+example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
   sorry
   done
 
-example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
+-- Tous les énoncés à partir d'ici sont vrais. Vous pouvez les prouver.
+
+example (f : X → Y) : Injective f ↔ ∀ x1 x2 : X, x1 ≠ x2 → f x1 ≠ f x2 := by
   sorry
   done
 
