@@ -3,7 +3,6 @@ import Mathlib.Data.Real.Basic
 import Library.Basic
 
 math2001_init
-set_option pp.funBinderTypes true
 
 --`push_neg` simplifie des négations
 -- `dsimp [f]` remplace les occurrences de `f` par sa définition
@@ -90,11 +89,11 @@ example : Injective (fun (x:ℝ) ↦ x ^ 3) := by
 
 
 example : Injective (fun (x : ℚ) ↦ x - 12) := by
-  sorry
-  done
-
-example : ¬ Injective (fun (x : ℚ) ↦ x - 12) := by
-  sorry
+  dsimp [Injective]
+  intro a b hab
+  calc a = a -12 + 12 := by ring
+    _ = b - 12 + 12 := by rw [hab]
+    _ = b := by ring
   done
 
 example : Injective (fun (x : ℝ) ↦ 3) := by
