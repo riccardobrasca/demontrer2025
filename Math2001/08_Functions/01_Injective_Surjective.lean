@@ -5,9 +5,11 @@ import Library.Basic
 math2001_init
 set_option pp.funBinderTypes true
 
+--`push_neg` simplifie des négations
+-- `dsimp [f]` remplace les occurrences de `f` par sa définition
+
 open Function
 namespace Int
-
 
 def F : ℕ → ℤ
   | 0 => 1
@@ -16,18 +18,7 @@ def F : ℕ → ℤ
 
 #eval F 5 -- infoview displays `8`
 
-
-#check @F -- infoview displays `F : ℕ → ℤ`
-
-
 def q (x : ℝ) : ℝ := x + 3
-
-
-#check @q -- infoview displays `q : ℝ → ℝ`
-
-
-#check fun (x : ℝ) ↦ x ^ 2 -- infoview displays `fun x ↦ x ^ 2 : ℝ → ℝ`
-
 
 example : Injective q := by
   dsimp [Injective]
