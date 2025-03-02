@@ -30,21 +30,18 @@ example {n : ℕ} (hn : 2 ≤ n) : (3:ℤ) ^ n ≥ 2 ^ n + 5 := by
       _ ≥ 2 ^ (k + 1) + 5 := by extra
   done
 
-example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 2 := by
+example : ∃ (k : ℕ), ∀ n > k, (2:ℤ) ^ n ≥ n ^ 2 + 4 := by
   use 4
   intro n hn
   induction_from_starting_point n, hn with k hk IH
-  · -- base case
-    sorry
-  · -- inductive step
-    sorry
+  · sorry
+  · sorry
   done
 
 
 /-! # Exercises -/
 
-
-example (n : ℕ) : 3 ^ n ≥ n ^ 2 + n + 1 := by
+example : ∃ (k : ℕ), ∀ n > k, 3 ^ n ≥ 2 ^ n + 100 := by
   sorry
   done
 
@@ -52,15 +49,16 @@ example {a : ℝ} (ha : -1 ≤ a) (n : ℕ) : (1 + a) ^ n ≥ 1 + n * a := by
   sorry
   done
 
-example : ∃ (k : ℕ), ∀ n > k, 3 ^ n ≥ 2 ^ n + 100 := by
+-- À partir d'ici on ne peut pas utiliser la subtraction, les variable sont dans `ℕ`!
+
+example (n : ℕ) : 3 ^ n ≥ n ^ 2 + n + 1 := by
   sorry
   done
 
-example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 2 + 4 := by
+example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 2 := by
   sorry
   done
 
--- Ici on ne peut pas utiliser la subtraction!
 example : ∃ (k : ℕ), ∀ n > k, 2 ^ n ≥ n ^ 3 := by
   sorry
   done
