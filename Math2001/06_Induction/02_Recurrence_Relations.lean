@@ -22,32 +22,9 @@ def b : ℕ → ℤ
 #eval b 7 -- infoview displays `316837008400094222150776738483768236006420971486980607`
 
 
-example (n : ℕ) : Odd (b n) := by
-  simple_induction n with k hk
-  · -- base case
-    use 1
-    calc b 0 = 3 := by rw [b]
-      _ = 2 * 1 + 1 := by numbers
-  · -- inductive step
-    obtain ⟨x, hx⟩ := hk
-    use 2 * x ^ 2 + 2 * x - 1
-    calc b (k + 1) = b k ^ 2 - 2 := by rw [b]
-      _ = (2 * x + 1) ^ 2 - 2 := by rw [hx]
-      _ = 2 * (2 * x ^ 2 + 2 * x - 1) + 1 := by ring
-  done
-
 def x : ℕ → ℤ
   | 0 => 5
   | n + 1 => 2 * x n - 1
-
-
-example (n : ℕ) : x n ≡ 1 [ZMOD 4] := by
-  simple_induction n with k IH
-  · -- base case
-    sorry
-  · -- inductive step
-    sorry
-  done
 
 example (n : ℕ) : x n = 2 ^ (n + 2) + 1 := by
   simple_induction n with k IH
@@ -63,7 +40,6 @@ example (n : ℕ) : x n = 2 ^ (n + 2) + 1 := by
 def A : ℕ → ℚ
   | 0 => 0
   | n + 1 => A n + (n + 1)
-
 
 example (n : ℕ) : A n = n * (n + 1) / 2 := by
   simple_induction n with k IH
@@ -83,21 +59,6 @@ def factorial : ℕ → ℕ
 
 notation:10000 n "!" => factorial n
 
-
-example (n : ℕ) : ∀ d, 1 ≤ d → d ≤ n → d ∣ n ! := by
-  simple_induction n with k IH
-  · -- base case
-    intro k hk1 hk
-    interval_cases k
-  · -- inductive step
-    intro d hk1 hk
-    obtain hk | hk : d = k + 1 ∨ d < k + 1 := eq_or_lt_of_le hk
-    · -- case 1: `d = k + 1`
-      sorry
-    · -- case 2: `d < k + 1`
-      sorry
-  done
-
 example (n : ℕ) : (n + 1)! ≥ 2 ^ n := by
   sorry
   done
@@ -108,10 +69,6 @@ example (n : ℕ) : (n + 1)! ≥ 2 ^ n := by
 def c : ℕ → ℤ
   | 0 => 7
   | n + 1 => 3 * c n - 10
-
-example (n : ℕ) : Odd (c n) := by
-  sorry
-  done
 
 example (n : ℕ) : c n = 2 * 3 ^ n + 5 := by
   sorry
