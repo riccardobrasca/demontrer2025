@@ -1,7 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Mathlib.Tactic.GCongr
 import Library.Basic
-import Library.Tactic.ModEq
 
 math2001_init
 
@@ -42,5 +40,11 @@ def B : ℕ → ℚ
   | n + 1 => B n + (n + 1 : ℚ) ^ 2
 
 example (n : ℕ) : B n = n * (n + 1) * (2 * n + 1) / 6 := by
-  sorry
+  simple_induction n with k IH
+  · calc B 0 = 0 := by rw [B]
+      _ = 0 * (0 + 1) * (2 * 0 + 1) / 6 := by numbers
+  · calc
+      B (k + 1) = B k + (k + 1 : ℚ) ^ 2 := by rw [B]
+      _ = k * (k + 1) * (2 * k + 1) / 6 + (k + 1 : ℚ) ^ 2 := by rw [IH]
+      _ = (k + 1) * (k + 1 + 1) * (2 * (k + 1) + 1) / 6 := by ring
   done
