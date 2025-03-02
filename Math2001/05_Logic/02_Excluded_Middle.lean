@@ -13,5 +13,18 @@ example {P : Prop} (hP : ¬¬P) : P := by
 /-! # Exercises -/
 
 example (P Q : Prop) : (¬P → ¬Q) ↔ (Q → P) := by
-  sorry
+  constructor
+  · intro h hQ
+    by_cases hP : P
+    · assumption
+    · have hnotQ : ¬Q := by
+        apply h
+        assumption
+      contradiction
+  · intro h hnotP
+    by_contra' hQ
+    have hP : P := by
+      apply h
+      assumption
+    contradiction
   done
