@@ -1,7 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Basic
-import Library.Tactic.Exhaust
 
 math2001_init
 
@@ -42,36 +41,6 @@ example : ¬ Bijective a := by
   · numbers
   done
 
-inductive Celestial
-  | sun
-  | moon
-  deriving DecidableEq
-
-inductive Subatomic
-  | proton
-  | neutron
-  | electron
-  deriving DecidableEq
-
-open Celestial Subatomic
-
-
-def f : Celestial → Subatomic
-  | sun => proton
-  | moon => electron
-
-
-example : ¬ Bijective f := by
-  dsimp [Bijective]
-  push_neg
-  right
-  dsimp [Surjective]
-  push_neg
-  use neutron
-  intro x
-  cases x <;> exhaust
-  done
-
 example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
   constructor
   · -- if `f` is bijective then `∀ y, ∃! x, f x = y`
@@ -105,29 +74,6 @@ example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
       obtain ⟨x, hx, hx'⟩ := h y
       use x
       apply hx
-  done
-
-example : ∀ f : Celestial → Celestial, Injective f → Bijective f := by
-  intro f hf
-  constructor
-  · -- `f` is injective by assumption
-    apply hf
-  -- show that `f` is surjective
-  match h_sun : f sun, h_moon : f moon with
-  | sun, sun =>
-    have : sun = moon
-    · apply hf
-      rw [h_sun, h_moon]
-    contradiction
-  | sun, moon =>
-    intro y
-    cases y
-    · use sun
-      apply h_sun
-    · use moon
-      apply h_moon
-  | moon, sun => sorry
-  | moon, moon => sorry
   done
 
 example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
@@ -166,36 +112,5 @@ example : Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
   done
 
 example : ¬ Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
-  sorry
-  done
-
-inductive Element
-  | fire
-  | water
-  | earth
-  | air
-  deriving DecidableEq
-
-open Element
-
-def e : Element → Element
-  | fire => earth
-  | water => air
-  | earth => fire
-  | air => water
-
-example : Bijective e := by
-  sorry
-  done
-
-example : ¬ Bijective e := by
-  sorry
-  done
-
-example : ∀ f : Subatomic → Subatomic, Injective f → Bijective f := by
-  sorry
-  done
-
-example : ∀ f : Element → Element, Injective f → Bijective f := by
   sorry
   done

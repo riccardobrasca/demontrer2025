@@ -1,9 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Basic
-import Library.Tactic.Exhaust
-import Library.Tactic.ModEq
-import Library.Theory.ParityModular
 
 math2001_init
 set_option pp.funBinderTypes true

@@ -1,7 +1,6 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
 import Mathlib.Data.Real.Basic
 import Library.Basic
-import Library.Tactic.Exhaust
 
 math2001_init
 set_option pp.funBinderTypes true
@@ -21,7 +20,6 @@ example : g ∘ f = h := by
     _ = h x := by rfl
   done
 
-
 def s (x : ℝ) : ℝ := 5 - x
 
 example : s ∘ s = id := by
@@ -30,41 +28,7 @@ example : s ∘ s = id := by
   ring
   done
 
-
 def Inverse (f : X → Y) (g : Y → X) : Prop := g ∘ f = id ∧ f ∘ g = id
-
-
-inductive Humour
-  | melancholic
-  | choleric
-  | phlegmatic
-  | sanguine
-  deriving DecidableEq
-
-open Humour
-
-
-def p : Humour → Humour
-  | melancholic => choleric
-  | choleric => sanguine
-  | phlegmatic => phlegmatic
-  | sanguine => melancholic
-
-
-def q : Humour → Humour
-  | melancholic => sanguine
-  | choleric => melancholic
-  | phlegmatic => phlegmatic
-  | sanguine => choleric
-
-example : Inverse p q := by
-  constructor
-  · ext x
-    cases x <;> exhaust
-  · ext x
-    cases x <;> exhaust
-  done
-
 
 theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
     ∃ g : Y → X, Inverse f g := by
@@ -108,7 +72,6 @@ theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) :
       _ = id y := by rw [hfg]
       _ = y := by rfl
 
-
 theorem bijective_iff_exists_inverse (f : X → Y) :
     Bijective f ↔ ∃ g : Y → X, Inverse f g := by
   constructor
@@ -121,27 +84,9 @@ theorem bijective_iff_exists_inverse (f : X → Y) :
 /-! # Exercises -/
 
 
-def a : Humour → Humour
-  | melancholic => sanguine
-  | choleric => choleric
-  | phlegmatic => phlegmatic
-  | sanguine => melancholic
-
-def b : Humour → Humour
-  | melancholic => phlegmatic
-  | choleric => phlegmatic
-  | phlegmatic => melancholic
-  | sanguine => sanguine
-
-def c : Humour → Humour
-  | melancholic => sorry
-  | choleric => sorry
-  | phlegmatic => sorry
-  | sanguine => sorry
-
-
 def u (x : ℝ) : ℝ := 5 * x + 1
 
+-- Il faut trouver la bonne définition!
 noncomputable def v (x : ℝ) : ℝ := sorry
 
 example : Inverse u v := by
