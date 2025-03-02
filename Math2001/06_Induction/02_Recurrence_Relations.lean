@@ -1,7 +1,5 @@
 /- Copyright (c) Heather Macbeth, 2023.  All rights reserved. -/
-import Mathlib.Tactic.GCongr
 import Library.Basic
-import Library.Tactic.ModEq
 
 math2001_init
 
