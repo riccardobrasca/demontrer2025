@@ -111,23 +111,55 @@ example : ¬ Injective (fun (x : ℝ) ↦ 3) := by
   done
 
 example : Injective (fun (x : ℚ) ↦ 3 * x - 1) := by
-  sorry
+  dsimp [Injective]
+  intro a b hab
+  calc a = (3*a - 1 + 1)/3 := by ring
+    _ = (3*b - 1 + 1)/3 := by rw [hab]
+    _ = b := by ring
   done
 
 example : Injective (fun (x : ℤ) ↦ 3 * x - 1) := by
-  sorry
+  dsimp [Injective]
+  intro a b hab
+  have H : 3*a = 3*b := by addarith [hab]
+  cancel 3 at H
   done
 
 example : Surjective (fun (x : ℝ) ↦ 2 * x) := by
-  sorry
+  dsimp [Surjective]
+  intro y
+  use y / 2
+  ring
   done
 
 example : ¬ Surjective (fun (x : ℤ) ↦ 2 * x) := by
-  sorry
+  dsimp [Surjective]
+  push_neg
+  use 1
+  intro x
+  have H := le_or_succ_le x 0
+  obtain H | H := H
+  · apply ne_of_lt
+    calc 2 * x ≤ 2 * 0 := by rel [H]
+      _ < 1  := by numbers
+  · apply ne_of_gt
+    calc 2 * x ≥ 2 * 1 := by rel [H]
+      _ > 1 := by numbers
   done
 
 example : ¬ Surjective (fun (n : ℕ) ↦ n ^ 2) := by
-  sorry
+  dsimp [Surjective]
+  push_neg
+  use 2
+  intro n
+  have H := le_or_succ_le n 1
+  obtain H | H := H
+  · apply ne_of_lt
+    calc n^2 ≤ 1^2 := by rel [H]
+      _ < 2  := by numbers
+  · apply ne_of_gt
+    calc n^2 ≥ 2^ 2 := by rel [H]
+      _ > 2 := by numbers
   done
 
 example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
