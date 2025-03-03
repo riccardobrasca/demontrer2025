@@ -6,7 +6,7 @@ math2001_init
 
 --`push_neg` simplifie des négations
 -- `dsimp [f]` remplace les occurrences de `f` par sa définition
-
+-- `lt_trichotomy (x y : ℝ) : x < y ∨ x = y ∨ x > y`
 open Function
 namespace Int
 
@@ -233,14 +233,53 @@ example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
 -- Tous les énoncés à partir d'ici sont vrais. Vous pouvez les prouver.
 
 example (f : X → Y) : Injective f ↔ ∀ x1 x2 : X, x1 ≠ x2 → f x1 ≠ f x2 := by
-  sorry
+  constructor
+  · intro hf a b hab
+    by_contra' hfab
+    dsimp [Injective] at hf
+    have H : a = b := by
+      apply hf
+      assumption
+    contradiction
+  · intro H
+    push_neg at H
+    dsimp [Injective]
+    intro a b hab
+    by_contra' hfab
+    have H1 : f a ≠ f b := by
+      apply H
+      assumption
+    contradiction
   done
 
 example {f : ℚ → ℚ} (hf : ∀ x y, x < y → f x < f y) : Injective f := by
-  sorry
+  dsimp [Injective]
+  by_contra' H
+  obtain ⟨a, b, hfab, hab⟩ := H
+  have H := lt_trichotomy a b
+  obtain H | H | H := H
+  · have H1 : f a ≠ f b := by
+      apply ne_of_lt
+      apply hf
+      assumption
+    contradiction
+  · contradiction
+  · have H1 : f a ≠ f b := by
+      apply ne_of_gt
+      apply hf
+      assumption
+    contradiction
   done
 
-example {f : X → ℕ} {x0 : X} (h0 : f x0 = 0) {i : X → X}
+example {X : Type} {f : X → ℕ} {x0 : X} (h0 : f x0 = 0) {i : X → X}
     (hi : ∀ x, f (i x) = f x + 1) : Surjective f := by
-  sorry
+  dsimp [Surjective]
+  intro n
+  simple_induction n with k IH
+  · use x0
+    assumption
+  · obtain ⟨m, hm⟩ := IH
+    use i m
+    rw [hi, hm]
+    done
   done
