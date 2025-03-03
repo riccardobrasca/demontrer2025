@@ -6,6 +6,7 @@ math2001_init
 
 open Function
 
+-- `rfl` prouve que `a=a`
 
 def p (x : ℝ) : ℝ := 2 * x - 5
 
@@ -21,7 +22,7 @@ example : Bijective p := by
   · dsimp [Surjective]
     intro y
     use (y + 5) / 2
-    calc p ((y + 5) / 2) = 2 * ((y + 5) / 2) - 5 := by rfl
+    calc p ((y + 5) / 2) = 2 * ((y + 5) / 2) - 5 := by dsimp [p]
       _ = y := by ring
   done
 
@@ -35,13 +36,13 @@ example : ¬ Bijective a := by
   push_neg
   use 0, 1
   constructor
-  · calc a 0 = 0 ^ 3 - 0 := by rfl
+  · calc a 0 = 0 ^ 3 - 0 := by dsimp [a]
       _ = 1 ^ 3 - 1 := by numbers
-      _ = a 1 := by rfl
+      _ = a 1 := by dsimp [a]
   · numbers
   done
 
-example {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
+example {X Y : Type} {f : X → Y} : Bijective f ↔ ∀ y, ∃! x, f x = y := by
   constructor
   · -- if `f` is bijective then `∀ y, ∃! x, f x = y`
     intro h y
