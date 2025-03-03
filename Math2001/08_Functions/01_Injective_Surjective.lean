@@ -163,19 +163,71 @@ example : ¬ Surjective (fun (n : ℕ) ↦ n ^ 2) := by
   done
 
 example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + 1) := by
-  sorry
+  intro f hf
+  dsimp [Injective] at hf ⊢
+  intro a b hab
+  apply hf
+  calc
+    f a = f a + 1  - 1 := by ring
+      _ = f b + 1 - 1 := by rw [hab]
+      _ = f b := by ring
   done
 
-example : ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
-  sorry
+example : ¬ ∀ (f : ℚ → ℚ), Injective f → Injective (fun x ↦ f x + x) := by
+  push_neg
+  use fun x ↦ -x
+  constructor
+  · dsimp [Injective]
+    intro a b hab
+    calc a = - -a := by ring
+      _ = - -b := by rw [hab]
+      _ = b := by ring
+  · dsimp [Injective]
+    push_neg
+    use 0
+    use 1
+    constructor
+    · numbers
+    · numbers
   done
 
 example : ¬ ∀ (f : ℤ → ℤ), Surjective f → Surjective (fun x ↦ 2 * f x) := by
-  sorry
+  push_neg
+  use fun x ↦ x
+  constructor
+  · dsimp [Surjective]
+    intro y
+    use y
+    ring
+  · dsimp [Surjective]
+    push_neg
+    use 1
+    intro a
+    have H := le_or_succ_le a 0
+    obtain H | H := H
+    · apply ne_of_lt
+      calc
+        2*a ≤ 2*0 := by rel [H]
+        _ = 0 := by ring
+        _ < 1 := by numbers
+    · apply ne_of_gt
+      calc
+        2*a ≥ 2*1 := by rel [H]
+        _ = 2 := by ring
+        _ > 1 := by numbers
   done
 
 example : ¬ ∀ c : ℝ, Surjective (fun x ↦ c * x) := by
-  sorry
+  push_neg
+  use 0
+  dsimp [Surjective]
+  push_neg
+  use 1
+  intro a
+  apply ne_of_lt
+  calc
+    0 * a = 0 := by ring
+    _ < 1 := by numbers
   done
 
 -- Tous les énoncés à partir d'ici sont vrais. Vous pouvez les prouver.
