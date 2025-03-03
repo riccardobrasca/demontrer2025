@@ -7,6 +7,7 @@ set_option pp.funBinderTypes true
 
 open Function
 
+-- `comp_apply : (g ∘ f) x = g (f x)`
 
 def f (a : ℝ) : ℝ := a + 3
 def g (b : ℝ) : ℝ := 2 * b
@@ -14,10 +15,10 @@ def h (c : ℝ) : ℝ := 2 * c + 6
 
 example : g ∘ f = h := by
   ext x
-  calc (g ∘ f) x = g (f x) := by rfl
-    _ = 2 * (x + 3) := by rfl
+  calc (g ∘ f) x = g (f x) := by rw [comp_apply]
+    _ = 2 * (x + 3) := by dsimp [f, g]
     _ = 2 * x + 6 := by ring
-    _ = h x := by rfl
+    _ = h x := by dsimp [h]
   done
 
 def s (x : ℝ) : ℝ := 5 - x
@@ -43,9 +44,9 @@ theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
     ext x
     dsimp [Injective] at h_inj
     apply h_inj
-    calc f ((g ∘ f) x) = f (g (f x)) := by rfl
+    calc f ((g ∘ f) x) = f (g (f x)) := by rw [comp_apply]
       _ = f x := by apply hg
-      _ = f (id x) := by rfl
+      _ = f (id x) := by dsimp [id]
   · -- prove `f ∘ g = id`
     ext y
     apply hg
@@ -58,19 +59,19 @@ theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) :
   constructor
   · -- `f` is injective
     intro x1 x2 hx
-    calc x1 = id x1 := by rfl
+    calc x1 = id x1 := by dsimp [id]
       _ = (g ∘ f) x1 := by rw [hgf]
-      _ = g (f x1) := by rfl
+      _ = g (f x1) := by rw [comp_apply]
       _ = g (f x2) := by rw [hx]
-      _ = (g ∘ f) x2 := by rfl
+      _ = (g ∘ f) x2 := by rw [comp_apply]
       _ = id x2 := by rw [hgf]
-      _ = x2 := by rfl
+      _ = x2 := by dsimp [id]
   · -- `f` is surjective
     intro y
     use g y
-    calc f (g y) = (f ∘ g) y := by rfl
+    calc f (g y) = (f ∘ g) y := by rw [comp_apply]
       _ = id y := by rw [hfg]
-      _ = y := by rfl
+      _ = y := by dsimp [id]
 
 theorem bijective_iff_exists_inverse (f : X → Y) :
     Bijective f ↔ ∃ g : Y → X, Inverse f g := by
@@ -87,31 +88,56 @@ theorem bijective_iff_exists_inverse (f : X → Y) :
 def u (x : ℝ) : ℝ := 5 * x + 1
 
 -- Il faut trouver la bonne définition!
-noncomputable def v (x : ℝ) : ℝ := sorry
+noncomputable def v (x : ℝ) : ℝ := (x - 1)/5
 
 example : Inverse u v := by
-  sorry
+  dsimp [Inverse]
+  constructor
+  · ext x
+    dsimp [u, v]
+    ring
+  · ext x
+    dsimp [u, v]
+    ring
   done
 
 example {f : X → Y} (hf : Injective f) {g : Y → Z} (hg : Injective g) :
     Injective (g ∘ f) := by
-  sorry
+  dsimp [Injective] at hf hg ⊢
+  intro a b hab
+  apply hf
+  apply hg
+  assumption
   done
 
 example {f : X → Y} (hf : Surjective f) {g : Y → Z} (hg : Surjective g) :
     Surjective (g ∘ f) := by
-  sorry
+  dsimp [Surjective] at hf hg ⊢
+  intro z
+  obtain ⟨y, hy⟩ := hg z
+  obtain ⟨x, hx⟩ := hf y
+  use x
+  rw [hx, hy]
   done
 
-example {f : X → Y} (hf : Surjective f) : ∃ g : Y → X, f ∘ g = id := by
-  sorry
+example {X Y : Type} {f : X → Y} {g : Y → X} (h : Inverse f g) : Inverse g f := by
+  dsimp [Inverse] at h ⊢
+  obtain ⟨h1, h2⟩ := h
+  constructor
+  · assumption
+  · assumption
   done
 
-example {f : X → Y} {g : Y → X} (h : Inverse f g) : Inverse g f := by
-  sorry
-  done
-
-example {f : X → Y} {g1 g2 : Y → X} (h1 : Inverse f g1) (h2 : Inverse f g2) :
+example {X Y : Type} {f : X → Y} {g1 g2 : Y → X} (h1 : Inverse f g1) (h2 : Inverse f g2) :
     g1 = g2 := by
-  sorry
+  dsimp [Inverse] at h1 h2
+  obtain ⟨h3, h4⟩ := h1
+  obtain ⟨h5, h6⟩ := h2
+  ext y
+  calc g1 y = g1 (id y) := by dsimp [id]
+    _ = g1 ((f ∘ g2) y) := by rw [h6]
+    _ = g1 (f (g2 y)) := by rw [comp_apply]
+    _ = (g1 ∘ f) (g2 y) := by rw [comp_apply]
+    _ = id (g2 y) := by rw [h3]
+    _ = g2 y := by dsimp [id]
   done
