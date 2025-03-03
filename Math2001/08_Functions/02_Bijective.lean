@@ -98,17 +98,23 @@ example : ¬ ∀ f : ℕ → ℕ, Injective f → Bijective f := by
 
 /-! # Exercises -/
 
+/-- Il y a des paires d'énoncés du type `example : 1 + 1 = 2` et `example : ¬(1 + 1 = 2)`.
+Bien évidemment un est vrai et l'autre est faux. À vous de trouver lequel est faisable. -/
+
+--Dans ce fichier seulement l'énoncé vrai est prouvé, l'autre est éffacé.
 
 example : Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
-  sorry
-  done
-
-example : ¬ Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
-  sorry
-  done
-
-example : Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
-  sorry
+  dsimp [Bijective]
+  constructor
+  · dsimp [Injective]
+    intro a b hab
+    calc a = (4 - 3 * a - 4) / -3 := by ring
+      _ = (4 - 3 * b - 4) / -3 := by rw [hab]
+      _ = b := by ring
+  · dsimp [Surjective]
+    intro y
+    use (4 - y) / 3
+    ring
   done
 
 example : ¬ Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
