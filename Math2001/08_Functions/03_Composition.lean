@@ -29,9 +29,9 @@ example : s ∘ s = id := by
   ring
   done
 
-def Inverse (f : X → Y) (g : Y → X) : Prop := g ∘ f = id ∧ f ∘ g = id
+def Inverse {X Y : Type} (f : X → Y) (g : Y → X) : Prop := g ∘ f = id ∧ f ∘ g = id
 
-theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
+theorem exists_inverse_of_bijective {X Y : Type} {f : X → Y} (hf : Bijective f) :
     ∃ g : Y → X, Inverse f g := by
   dsimp [Bijective] at hf
   obtain ⟨h_inj, h_surj⟩ := hf
@@ -52,7 +52,7 @@ theorem exists_inverse_of_bijective {f : X → Y} (hf : Bijective f) :
     apply hg
   done
 
-theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) :
+theorem bijective_of_inverse {X Y : Type} {f : X → Y} {g : Y → X} (h : Inverse f g) :
     Bijective f := by
   dsimp [Inverse] at h
   obtain ⟨hgf, hfg⟩ := h
@@ -73,7 +73,7 @@ theorem bijective_of_inverse {f : X → Y} {g : Y → X} (h : Inverse f g) :
       _ = id y := by rw [hfg]
       _ = y := by dsimp [id]
 
-theorem bijective_iff_exists_inverse (f : X → Y) :
+theorem bijective_iff_exists_inverse {X Y : Type} (f : X → Y) :
     Bijective f ↔ ∃ g : Y → X, Inverse f g := by
   constructor
   · apply exists_inverse_of_bijective
