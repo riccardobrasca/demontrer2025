@@ -118,5 +118,13 @@ example : Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
   done
 
 example : ¬ Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
-  sorry
+  dsimp [Bijective]
+  push_neg
+  left
+  dsimp [Injective]
+  push_neg
+  use 0, -2
+  constructor
+  · numbers
+  · numbers
   done
