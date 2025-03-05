@@ -12,19 +12,6 @@ example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 := by
     _ = -1 := by numbers
   done
 
-
-example {a b : ℝ} (h : ∀ x, x ≥ a ∨ x ≤ b) : a ≤ b := by
-  obtain h1 | h2 := h ((a+b)/2)
-  · calc
-      a = 2*a-a := by ring
-      _ ≤ 2*((a+b)/2)-a := by rel [h1]
-      _ = b := by ring
-  · calc
-      a = 2*((a+b)/2)-b := by ring
-      _ ≤ 2*b-b := by rel [h2]
-      _ = b := by ring
-  done
-
 example {a b : ℝ} (ha1 : a ^ 2 ≤ 2) (hb1 : b ^ 2 ≤ 2) (ha2 : ∀ y, y ^ 2 ≤ 2 → y ≤ a)
     (hb2 : ∀ y, y ^ 2 ≤ 2 → y ≤ b) : a = b := by
   apply le_antisymm
@@ -54,6 +41,18 @@ example : ∃ c : ℝ, ∀ x y, x ^ 2 + y ^ 2 ≤ 4 → x + y ≥ c := by
   have H := abs_le_of_sq_le_sq' hxy (by numbers)
   obtain ⟨H1, H2⟩ := H
   addarith [H1]
+  done
+
+example {a b : ℝ} (h : ∀ x, x ≥ a ∨ x ≤ b) : a ≤ b := by
+  obtain h1 | h2 := h ((a+b)/2)
+  · calc
+      a = 2*a-a := by ring
+      _ ≤ 2*((a+b)/2)-a := by rel [h1]
+      _ = b := by ring
+  · calc
+      a = 2*((a+b)/2)-b := by ring
+      _ ≤ 2*b-b := by rel [h2]
+      _ = b := by ring
   done
 
 example : ∃ (k : ℤ), ∀ n ≥ k, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
