@@ -13,10 +13,6 @@ example {a : ℝ} (h : ∀ x, a ≤ x ^ 2 - 2 * x) : a ≤ -1 := by
   done
 
 
-example {a b : ℝ} (h : ∀ x, x ≥ a ∨ x ≤ b) : a ≤ b := by
-  sorry
-  done
-
 example {a b : ℝ} (ha1 : a ^ 2 ≤ 2) (hb1 : b ^ 2 ≤ 2) (ha2 : ∀ y, y ^ 2 ≤ 2 → y ≤ a)
     (hb2 : ∀ y, y ^ 2 ≤ 2 → y ≤ b) : a = b := by
   apply le_antisymm
@@ -36,6 +32,12 @@ example : ∃ b : ℝ, ∀ x : ℝ, b ≤ x ^ 2 - 2 * x := by
 example : ∃ c : ℝ, ∀ x y, x ^ 2 + y ^ 2 ≤ 4 → x + y ≥ c := by
   sorry
   done
+
+
+example {a b : ℝ} (h : ∀ x, x ≥ a ∨ x ≤ b) : a ≤ b := by
+  sorry
+  done
+
 
 example : ∃ (k : ℤ), ∀ n ≥ k, n ^ 3 ≥ 4 * n ^ 2 + 7 := by
   use 5
