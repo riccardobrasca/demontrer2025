@@ -10,13 +10,13 @@ open Int
 
 example : ¬ (∀ x : ℝ, x ^ 2 ≥ x) := by
   by_contra' h
-  have : 0.5 ^ 2 ≥ 0.5 := h 0.5
-  numbers at this
+  have H : 0.5 ^ 2 ≥ 0.5 := h 0.5
+  numbers at H
   done
 
 example {x y : ℝ} (h : x + y = 0) : ¬(x > 0 ∧ y > 0) := by
-  by_contra' h
-  obtain ⟨hx, hy⟩ := h
+  by_contra' h1
+  obtain ⟨hx, hy⟩ := h1
   have H : (0 : ℝ) > 0 :=
     calc
       0 = x + y := by rw [h]
