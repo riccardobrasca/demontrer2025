@@ -51,42 +51,71 @@ example {t : ℤ} (h2 : t < 3) (h : t - 1 = 6) : t = 13 := by
   done
 
 example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (h : a ^ 2 + b ^ 2 = c ^ 2) : 3 ≤ a := by
-  obtain H1 | H1 := le_or_succ_le a 2
-  · obtain H2 | H2 := le_or_succ_le b 1
-    · have H3 : c^2 < 3^2 := by
-        calc
-          c^2 ≤ a^2 + b^2 := by addarith [h]
-          _ ≤ 2^2 + 1^2 := by rel [H1, H2]
-          _ < 3^2 := by numbers
-      cancel 2 at H3
-      interval_cases b
-      interval_cases c
-      · interval_cases a
+  have Ha3 := le_or_succ_le a 2
+  obtain Ha3 | Ha3 := Ha3
+  · interval_cases a
+    · have Hb1 := le_or_succ_le b 1
+      obtain Hb1 | Hb1 := Hb1
+      · interval_cases b
+        have H : 1^2+1^2 ≠ c ^ 2 := by
+          have Hc1 := le_or_succ_le c 1
+          obtain Hc1 | Hc1 := Hc1
+          · interval_cases c
+            numbers
+          · apply ne_of_lt
+            calc
+              c^2 ≥ 2 ^ 2 :=  by rel [Hc1]
+              _ > 1^2+1^2 := by numbers
+        contradiction
+      · have Hbc := lt_trichotomy b c
+        have H : ¬(1^2+b^2=c^2) := by
+          obtain Hbc | Hbc | Hbc := Hbc
+          · have Hbc' : c ≥ b + 1 := by
+              addarith [Hbc]
+            apply ne_of_lt
+            calc
+              c^2 ≥ (b+1) ^ 2 := by rel [Hbc']
+              _ = 1^2 + b^2 + 2*b := by ring
+              _ > 1^2 + b^2 := by extra
+          · rw [Hbc]
+            apply ne_of_gt
+            extra
+          · apply ne_of_gt
+            calc
+              c^2 < b^2 := by rel [Hbc]
+              _ < 1^2+b^2 := by extra
+        contradiction
+    · have Hb1 := le_or_succ_le b 1
+      obtain Hb1 | Hb1 := Hb1
+      · interval_cases b
+        have Hc : c < 3 := by
+          have Hc' : c ^ 2 < 3 ^ 2 := by
+            calc
+              c^2 = 2^2+1^2 := by rw [h]
+              _ < 3^2 := by numbers
+          cancel 2 at Hc'
+        interval_cases c
         · numbers at h
         · numbers at h
-      · interval_cases a
-        · numbers at h
-        · numbers at h
-    · have H : b^2 < c^2 := by
-        calc
-          b^2 = b^2 + 0^2 := by ring
-          _ < b^2 + a^2 := by rel [ha]
-          _ = a^2 + b^2 := by ring
-          _ = c^2 := by rw [h]
-      cancel 2 at H
-      have H3 : c^2 < (b+1)^2 := by
-        calc
-          c^2 = a^2 + b^2 := by rw [h]
-          _ ≤ 2^2+b^2 := by rel [H1]
-          _ = b^2 + 2*2 := by ring
-          _ ≤ b^2 + 2*b := by rel [H2]
-          _ < b^2 + 2*b+1 := by extra
-          _ = (b+1)^2 := by ring
-      cancel 2 at H3
-      have H4 : ¬(c < b+1) := by
-        apply not_lt_of_ge
-        addarith [H]
-      contradiction
+      · have Hbc := lt_trichotomy b c
+        have H : ¬(2^2+b^2=c^2) := by
+          obtain Hbc | Hbc | Hbc := Hbc
+          · have Hbc' : c ≥ b + 1 := by
+              addarith [Hbc]
+            apply ne_of_lt
+            calc
+              c^2 ≥ (b+1)^2 := by rel [Hbc']
+              _ = 2*b + (b^2+1) := by ring
+              _ ≥ 2*2 + (b^2+1) := by rel [Hb1]
+              _ > 2^2+b^2 := by extra
+          · rw [Hbc]
+            apply ne_of_gt
+            extra
+          · apply ne_of_gt
+            calc
+              c^2 < b^2 := by rel [Hbc]
+              _ < 2^2+b^2 := by extra
+        contradiction
   · assumption
   done
 
