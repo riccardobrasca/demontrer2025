@@ -7,6 +7,19 @@ math2001_init
 -- mul_eq_zero {a b : ℝ} : a * b = 0 ↔ a = 0 ∨ b = 0
 -- not_lt_of_ge {a b : ℝ} (h : a ≥ b) : ¬a < b
 
+example (x y : ℝ) (hx1 : x = 1) (hx2 : x = 2) : y = 4 := by
+  have hx3 : x ≠ 1 := by
+    rw [hx2]
+    numbers
+  contradiction
+  done
+
+
+example (x y : ℝ) (hx1 : x = 1) (hx2 : x = 2) : y = 4 := by
+  rw [hx1] at hx2
+  numbers at hx2
+  done
+
 example {y : ℝ} (x : ℝ) (h : 0 < x * y) (hx : 0 ≤ x) : 0 < y := by
   obtain hneg | hpos : y ≤ 0 ∨ 0 < y := le_or_lt y 0
   · -- the case `y ≤ 0`
