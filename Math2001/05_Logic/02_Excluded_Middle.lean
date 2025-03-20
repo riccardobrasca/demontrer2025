@@ -4,8 +4,8 @@ import Library.Basic
 math2001_init
 
 example {P : Prop} (hP : ¬¬P) : P := by
-  by_cases hP : P
-  · apply hP
+  by_cases HP : P
+  · assumption
   · contradiction
   done
 
