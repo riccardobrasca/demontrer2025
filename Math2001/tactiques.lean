@@ -43,13 +43,7 @@ import Library.Basic
 
 `intro`
 
-`constructor`, pour ↔
-
-`rw`, pour ↔
-
 `interval_cases`
-
-`by_contra'`
 
 `by_cases`
 
